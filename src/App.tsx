@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./assets/img/logo.png";
 import "./App.scss";
-import { Test } from "@lehrlingsquiz/components";
+// import { Test } from "@lehrlingsquiz/components";
 
 const App = () => {
   return (
