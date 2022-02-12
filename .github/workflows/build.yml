@@ -1,0 +1,17 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+    pull-request: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Clean install packages
+        run: npm ci
+      - name: Build React app
+        run: npm run build
