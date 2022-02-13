@@ -17,10 +17,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": ".",
+    "experimentalDecorators": true,
     "paths": {
-      "@lehrlingsquiz/components": ["src/components/index.ts"]
-    },
-    "experimentalDecorators": true
+      "@lehrlingsquiz/components": ["src/components/index.ts"],
+      "@lehrlingsquiz/assets": ["src/assets/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "tmp"]

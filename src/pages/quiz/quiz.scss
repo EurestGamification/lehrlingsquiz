@@ -1,0 +1,11 @@
+@use "theme:variables" as variables;
+
+.quiz {
+  width: 100%;
+  height: 100vh;
+  padding: variables.$spacing-m variables.$horizontal-spacer-xs;
+
+  &__content {
+    padding: variables.$spacing-l 0;
+  }
+}

@@ -1,0 +1,15 @@
+@use "theme:variables" as variables;
+
+.header {
+  width: 100%;
+  height: variables.$vertical-spacer-m;
+  padding: variables.$spacing-l 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__logo {
+    height: 100%;
+    margin-right: variables.$spacing-xl;
+  }
+}
