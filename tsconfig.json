@@ -19,7 +19,8 @@
     "baseUrl": ".",
     "paths": {
       "@lehrlingsquiz/components": ["src/components/index.ts"]
-    }
+    },
+    "experimentalDecorators": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "tmp"]
