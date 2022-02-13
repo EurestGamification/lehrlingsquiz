@@ -8,7 +8,7 @@ export class QuizStore implements IStore {
     "Erkennen von Lebensmitteln",
     "Zubereitungsarten & Menüerkennung",
     "Kundenorientierung",
-    "Quiz zum Unternehmen Eurest (Schätzfragen)"
+    "Quiz zum Unternehmen Eurest"
   ] as const;
 
   @observable score: number = 0;

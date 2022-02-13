@@ -9,7 +9,7 @@ export const CustomerOrientation: React.FC = inject(
   observer(() => {
     return (
       <div className="customer-orientation">
-        <h3>Zubereitungsarten & Menüerkennung</h3>
+        <h3>{quizStore.quizSteps[2]}</h3>
         <div className="customer-orientation__content"></div>
       </div>
     );

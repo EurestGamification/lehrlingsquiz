@@ -7,7 +7,7 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     return (
       <div className="company-estimate">
-        <h3>Quiz zum Unternehmen Eurest</h3>
+        <h3>{quizStore.quizSteps[3]}</h3>
         <div className="company-estimate__content"></div>
       </div>
     );
