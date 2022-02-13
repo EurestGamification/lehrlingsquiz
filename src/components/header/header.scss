@@ -6,10 +6,14 @@
   padding: variables.$spacing-l 0;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: baseline;
 
   &__logo {
     height: 100%;
     margin-right: variables.$spacing-xl;
+  }
+
+  &__score {
+    margin-left: auto;
   }
 }
