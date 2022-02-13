@@ -36,11 +36,24 @@ module.exports = function override(config = {}, env) {
         ...resolveTsconfigPathsToAlias({
           tsconfigPath: "./tsconfig.json",
           webpackConfigBasePath: "../"
-        })
+        }),
         // "@lehrlingsquiz/components": path.join(
         //   __dirname,
         //   "src/components/index.ts"
         // )
+        theme: path.join(__dirname, "src/theme/index.scss"),
+        "theme:variables": path.join(
+          __dirname,
+          "src/theme/variables/index.scss"
+        ),
+        "theme:mixins": path.join(
+          __dirname,
+          "src/theme/mixins/index.scss"
+        ),
+        "theme:styles": path.join(
+          __dirname,
+          "src/theme/styles/index.scss"
+        )
       }
     }
   };
