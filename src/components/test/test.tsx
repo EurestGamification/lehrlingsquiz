@@ -4,7 +4,7 @@ import { Draggable, Droppable } from "../../components";
 
 interface TestProps {}
 
-const Test: React.FC<TestProps> = ({}: TestProps) => {
+const Test: React.FC<TestProps> = (props: TestProps) => {
   const [isDropped, setIsDropped] = useState(false);
   const draggableMarkup = <Draggable>Drag me</Draggable>;
 

@@ -3,34 +3,50 @@ import { Step, StepLabel, Stepper } from "@mui/material";
 import { inject, observer } from "mobx-react";
 import React from "react";
 import { quizStore } from "src/stores/quize.store";
+import {
+  CompanyEstimate,
+  CustomerOrientation,
+  FoodDetection,
+  MenuRecognition
+} from "./questions";
 import "./quiz.scss";
 
 interface QuizProps {}
 
+const questionPages = {
+  0: FoodDetection,
+  1: MenuRecognition,
+  2: CustomerOrientation,
+  3: CompanyEstimate
+} as const;
+
 const Quiz: React.FC = inject(quizStore.storeKey)(
-  observer(({}: QuizProps) => {
-    const steps: any[] = [
-      "Erkennen von Lebensmitteln",
-      "Zubereitungsarten & Menüerkennung",
-      "Kundenorientierung",
-      "Quiz zum Unternehmen Eurest (Schätzfragen)"
-    ];
+  observer((props: QuizProps) => {
+    const ActiveQuizPage: React.FC =
+      questionPages[
+        quizStore.currentQuizStep as keyof typeof questionPages
+      ];
 
     return (
       <div className="quiz">
         <Header />
-        <div className="quiz__content">
+        <div className="quiz__stepper">
           <Stepper
             alternativeLabel
             activeStep={quizStore.currentQuizStep}
           >
-            {steps.map((label: string) => (
+            {quizStore.quizSteps.map((label: string) => (
               <Step key={label}>
-                <StepLabel>{label}</StepLabel>
+                <StepLabel></StepLabel>
               </Step>
             ))}
           </Stepper>
+        </div>
+        <div className="quiz__content">
+          <ActiveQuizPage />
+        </div>
 
+        <div className="quiz__actions">
           <button
             onClick={() =>
               quizStore.setCurrentQuizStep(

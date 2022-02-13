@@ -2,15 +2,15 @@
 
 .header {
   width: 100%;
-  height: variables.$vertical-spacer-m;
-  padding: variables.$spacing-l 0;
+  // height: variables.$vertical-spacer-m;
+  // padding: variables.$spacing-l 0;
   display: flex;
   justify-content: flex-start;
   align-items: baseline;
 
   &__logo {
-    height: 100%;
-    margin-right: variables.$spacing-xl;
+    width: variables.$spacing-5xl;
+    margin-right: variables.$spacing-m;
   }
 
   &__score {

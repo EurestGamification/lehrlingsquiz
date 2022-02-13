@@ -5,7 +5,14 @@
   height: 100vh;
   padding: variables.$spacing-m variables.$horizontal-spacer-xs;
 
+  &__stepper {
+  }
+
   &__content {
     padding: variables.$spacing-l 0;
+  }
+
+  &__actions {
+    margin-top: variables.$spacing-5xl;
   }
 }

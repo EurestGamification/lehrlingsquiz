@@ -24,8 +24,8 @@ export class QuizStore implements IStore {
 
   @action setCurrentQuizStep(value: number): number {
     if (value < 0) return (this.currentQuizStep = 0);
-    if (value > this.quizSteps.length)
-      return (this.currentQuizStep = this.quizSteps.length);
+    if (value > this.quizSteps.length - 1)
+      return (this.currentQuizStep = this.quizSteps.length - 1);
 
     return (this.currentQuizStep = value);
   }
