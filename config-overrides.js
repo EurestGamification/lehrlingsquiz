@@ -46,7 +46,7 @@ module.exports = function override(config = {}, env) {
           __dirname,
           "src/components/index.ts"
         ),
-        "@lehrlingsquiz/assets": path.join(__dirname, "src/assets/*"),
+        // "@lehrlingsquiz/assets": path.join(__dirname, "src/assets/*"),
         theme: path.join(__dirname, "src/theme/index.scss"),
         "theme:variables": path.join(
           __dirname,
