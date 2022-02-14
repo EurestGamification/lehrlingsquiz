@@ -44,6 +44,7 @@ export class QuizStore implements IStore {
   @action resetQuiz(): void {
     this.isQuizStarted = false;
     this.isQuizEnded = false;
+    this.setCurrentQuizStep(0);
   }
 }
 
