@@ -10,7 +10,17 @@ export const CustomerOrientation: React.FC = inject(
     return (
       <div className="customer-orientation">
         <h3>{quizStore.quizSteps[2]}</h3>
-        <div className="customer-orientation__content"></div>
+        <div className="customer-orientation__content">
+          <button
+            onClick={() =>
+              quizStore.setCurrentQuizStep(
+                quizStore.currentQuizStep + 1
+              )
+            }
+          >
+            Weiter
+          </button>
+        </div>
       </div>
     );
   })

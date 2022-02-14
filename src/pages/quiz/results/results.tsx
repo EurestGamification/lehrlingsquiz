@@ -8,6 +8,7 @@ const Results: React.FC = inject(quizStore.storeKey)(
     return (
       <div className="results">
         <div>Results</div>
+        <button onClick={() => quizStore.resetQuiz()}>Reset</button>
       </div>
     );
   })

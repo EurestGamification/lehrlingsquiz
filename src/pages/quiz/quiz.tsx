@@ -42,6 +42,7 @@ const Quiz: React.FC = inject(quizStore.storeKey)(
               <Stepper
                 alternativeLabel
                 activeStep={quizStore.currentQuizStep}
+                onEnded={() => quizStore.endQuiz()}
               >
                 {quizStore.quizSteps.map((label: string) => (
                   <Step key={label}>
@@ -55,25 +56,6 @@ const Quiz: React.FC = inject(quizStore.storeKey)(
             </div>
 
             <div className="quiz__actions">
-              <button
-                onClick={() =>
-                  quizStore.setCurrentQuizStep(
-                    quizStore.currentQuizStep - 1
-                  )
-                }
-              >
-                Zurück
-              </button>
-              <button
-                onClick={() =>
-                  quizStore.setCurrentQuizStep(
-                    quizStore.currentQuizStep + 1
-                  )
-                }
-              >
-                Weiter
-              </button>
-
               <button
                 onClick={() =>
                   quizStore.setScore(quizStore.score + 1)

@@ -38,8 +38,12 @@ export class QuizStore implements IStore {
   }
 
   @action endQuiz(): void {
-    this.isQuizStarted = false;
     this.isQuizEnded = true;
+  }
+
+  @action resetQuiz(): void {
+    this.isQuizStarted = false;
+    this.isQuizEnded = false;
   }
 }
 
