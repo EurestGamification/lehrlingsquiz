@@ -19,9 +19,9 @@
     "baseUrl": ".",
     "experimentalDecorators": true,
     "paths": {
-      "@lehrlingsquiz/stores": ["src/stores/index.ts"],
-      "@lehrlingsquiz/components": ["src/components/index.ts"],
-      "@lehrlingsquiz/assets": ["src/assets/*"]
+      "@lehrlingsquiz/stores": ["./src/stores/index.ts"],
+      "@lehrlingsquiz/components": ["./src/components/index.ts"],
+      "@lehrlingsquiz/assets": ["./src/assets/*"]
     }
   },
   "include": ["src"],
