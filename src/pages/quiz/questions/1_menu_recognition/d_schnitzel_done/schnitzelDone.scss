@@ -1,1 +1,7 @@
-.schnitzel-done{}
+.schnitzel-done {
+  &__content {
+    img {
+      width: 100%;
+    }
+  }
+}
