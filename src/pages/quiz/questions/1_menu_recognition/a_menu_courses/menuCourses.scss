@@ -1,0 +1,10 @@
+@use "theme:variables" as variables;
+
+.menu-courses {
+  &__items {
+    &__item {
+      padding: variables.$spacing-s variables.$spacing-m;
+      background-color: rgb(223, 223, 223);
+    }
+  }
+}

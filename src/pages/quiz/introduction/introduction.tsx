@@ -7,7 +7,7 @@ const Introduction: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     return (
       <div className="introduction">
-        <div>Introduction</div>
+        <h3>Introduction</h3>
         <p>some intro text...</p>
         <button onClick={() => quizStore.startQuiz()}>
           Quiz starten
