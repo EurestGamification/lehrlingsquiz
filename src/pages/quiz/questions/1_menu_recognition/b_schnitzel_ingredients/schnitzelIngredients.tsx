@@ -7,6 +7,8 @@ import {
   DndContext,
   DragEndEvent,
   MouseSensor,
+  SensorDescriptor,
+  SensorOptions,
   TouchSensor,
   useDraggable,
   useDroppable,
@@ -103,7 +105,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     string[]
   >([]);
 
-  const sensors = useSensors(
+  const sensors: SensorDescriptor<SensorOptions>[] = useSensors(
     useSensor(TouchSensor),
     useSensor(MouseSensor)
   );
@@ -113,12 +115,14 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     console.log(ingredient);
 
     if (event.over && event.over.id === droppablePanId) {
-      setIngredients(ingredients.filter(e => e != ingredient));
+      setIngredients(ingredients.filter(e => e !== ingredient));
       setChosenIngregients([...chosenIngredients, ingredient]);
     }
   };
 
-  console.log(chosenIngredients);
+  const checkAnswers: () => void = () => {
+    let additionalPoints = 0;
+  };
 
   return (
     <div className="schnitzel-ingredients">
@@ -159,6 +163,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
           </div>
           <button
             onClick={() => {
+              checkAnswers();
               onStepFinished();
             }}
           >
