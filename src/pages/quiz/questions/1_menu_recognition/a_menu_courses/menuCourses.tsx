@@ -5,7 +5,7 @@ import {
   SortableContainer,
   SortableElement
 } from "react-sortable-hoc";
-import { IMenuRecognitionProps } from "../interfaces";
+import { IMenuRecognitionProps } from "../menuRecognition";
 import "./menuCourses.scss";
 
 export type MenuItem = { id: number; name: string };

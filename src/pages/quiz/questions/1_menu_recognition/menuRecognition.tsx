@@ -5,7 +5,6 @@ import MenuCourses from "./a_menu_courses/menuCourses";
 import SchnitzelIngredients from "./b_schnitzel_ingredients/schnitzelIngredients";
 import BreadSchnitzel from "./c_bread_schnitzel/breadSchnitzel";
 import SchnitzelDone from "./d_schnitzel_done/schnitzelDone";
-import { IMenuRecognitionProps } from "./interfaces";
 import "./menuRecognition.scss";
 
 const menuRecognitionSteps = {
@@ -14,6 +13,10 @@ const menuRecognitionSteps = {
   2: BreadSchnitzel,
   3: SchnitzelDone
 } as const;
+
+export interface IMenuRecognitionProps {
+  onStepFinished: () => any;
+}
 
 export const MenuRecognition: React.FC = inject(quizStore.storeKey)(
   observer(() => {

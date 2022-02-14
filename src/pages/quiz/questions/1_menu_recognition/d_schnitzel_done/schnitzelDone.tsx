@@ -1,9 +1,9 @@
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
 import React from "react";
-import { IMenuRecognitionProps } from "../interfaces";
 import wienerSchnitzel from "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg";
 import "./schnitzelDone.scss";
+import { IMenuRecognitionProps } from "../menuRecognition";
 
 interface SchnitzelDoneProps extends IMenuRecognitionProps {}
 

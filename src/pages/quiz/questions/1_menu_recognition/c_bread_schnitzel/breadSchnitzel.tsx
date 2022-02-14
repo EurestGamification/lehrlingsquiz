@@ -11,9 +11,9 @@ import {
   useSensors
 } from "@dnd-kit/core";
 import React, { useState } from "react";
-import { IMenuRecognitionProps } from "../interfaces";
 import bowl from "@lehrlingsquiz/assets/img/bowl.png";
 import "./breadSchnitzel.scss";
+import { IMenuRecognitionProps } from "../menuRecognition";
 
 const bowlNamePrefix = "bowl" as const;
 

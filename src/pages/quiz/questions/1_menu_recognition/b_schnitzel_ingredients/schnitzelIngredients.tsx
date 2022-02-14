@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IMenuRecognitionProps } from "../interfaces";
 import "./schnitzelIngredients.scss";
 import pan from "@lehrlingsquiz/assets/img/pan.png";
 import { countMatches, shuffle } from "@lehrlingsquiz/util";
@@ -16,6 +15,7 @@ import {
   useSensors
 } from "@dnd-kit/core";
 import { quizStore } from "@lehrlingsquiz/stores";
+import { IMenuRecognitionProps } from "../menuRecognition";
 
 const correctIngredients: string[] = [
   "Eier",
