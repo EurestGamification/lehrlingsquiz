@@ -92,6 +92,7 @@ interface SchnitzelIngredientsProps extends IMenuRecognitionProps {}
 const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
   onStepFinished
 }: SchnitzelIngredientsProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ingredients, setIngredients] = useState<string[]>(
     shuffle<string>(availaleIngredients)
   );
