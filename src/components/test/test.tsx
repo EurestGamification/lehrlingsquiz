@@ -1,4 +1,11 @@
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragEndEvent,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors
+} from "@dnd-kit/core";
 import React, { useState } from "react";
 import { Draggable, Droppable } from "../../components";
 
@@ -8,8 +15,13 @@ const Test: React.FC<TestProps> = (props: TestProps) => {
   const [isDropped, setIsDropped] = useState(false);
   const draggableMarkup = <Draggable>Drag me</Draggable>;
 
+  const sensors = useSensors(
+    useSensor(TouchSensor),
+    useSensor(MouseSensor)
+  );
+
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       {!isDropped ? draggableMarkup : null}
       <Droppable>
         {isDropped ? draggableMarkup : "Drop here"}

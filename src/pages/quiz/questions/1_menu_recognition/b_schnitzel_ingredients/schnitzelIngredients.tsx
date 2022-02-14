@@ -5,6 +5,7 @@ import pan from "@lehrlingsquiz/assets/img/pan.png";
 import { shuffle } from "@lehrlingsquiz/util";
 import {
   DndContext,
+  DragEndEvent,
   MouseSensor,
   TouchSensor,
   useDraggable,
@@ -12,6 +13,7 @@ import {
   useSensor,
   useSensors
 } from "@dnd-kit/core";
+import { Test } from "@lehrlingsquiz/components";
 
 const correctIngredients: string[] = [
   "Eier",
@@ -39,12 +41,14 @@ const availaleIngredients: string[] = [
   ...fakeIngredients
 ];
 
+const droppablePanId = "pan" as const;
+
 const Pan: React.FC = (props: any) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable"
+    id: "pan"
   });
   const style = {
-    backgroundColor: isOver ? "green" : undefined
+    backgroundColor: isOver ? "#dfdfdf" : undefined
   };
 
   return (
@@ -67,7 +71,7 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
 }: DraggableIngredientProps) => {
   const { attributes, listeners, setNodeRef, transform } =
     useDraggable({
-      id: "draggable"
+      id: title
     });
   const style = transform
     ? {
@@ -92,18 +96,36 @@ interface SchnitzelIngredientsProps extends IMenuRecognitionProps {}
 const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
   onStepFinished
 }: SchnitzelIngredientsProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ingredients, setIngredients] = useState<string[]>(
     shuffle<string>(availaleIngredients)
   );
+  const [chosenIngredients, setChosenIngregients] = useState<
+    string[]
+  >([]);
+
   const sensors = useSensors(
     useSensor(TouchSensor),
     useSensor(MouseSensor)
   );
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const ingredient = event.active.id;
+    console.log(ingredient);
+
+    if (event.over && event.over.id === droppablePanId) {
+      setIngredients(ingredients.filter(e => e != ingredient));
+      setChosenIngregients([...chosenIngredients, ingredient]);
+    }
+  };
+
+  console.log(chosenIngredients);
+
   return (
     <div className="schnitzel-ingredients">
-      <DndContext sensors={sensors}>
+      <DndContext
+        sensors={sensors}
+        onDragEnd={(e: DragEndEvent) => handleDragEnd(e)}
+      >
         <div className="schnitzel-ingredients__content">
           <p className="schnitzel-ingredients__content__instruction">
             Super, und jetzt bereiten wir unsere Hauptspeise zu –
@@ -116,12 +138,25 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
           </p>
           <h4>Verfügbare Zutaten</h4>
           <p>
-            {ingredients.map((ingredient: string) => (
-              <span key={ingredient}>{` ${ingredient} `}</span>
+            {ingredients.map((ingredient: string, i: number) => (
+              <>
+                <DraggableIngredient
+                  key={ingredient}
+                  title={ingredient}
+                />
+                {i !== ingredients.length - 1 && " "}
+              </>
             ))}
-            <DraggableIngredient title="test ingredient" />
           </p>
           <Pan />
+          <div className="schnitzel-ingredients__content__chosen-ingredients">
+            {chosenIngredients.map((e: string, i: number) => (
+              <>
+                <span key={`chosenIngredients-${e}`}>{e}</span>
+                {i !== chosenIngredients.length - 1 && ", "}
+              </>
+            ))}
+          </div>
           <button
             onClick={() => {
               onStepFinished();
