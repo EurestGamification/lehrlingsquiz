@@ -26,8 +26,6 @@ function resolveTsconfigPathsToAlias({
   return aliases;
 }
 
-console.log(resolveTsconfigPathsToAlias());
-
 module.exports = function override(config = {}, env) {
   return {
     ...config,
@@ -36,16 +34,6 @@ module.exports = function override(config = {}, env) {
       alias: {
         ...config.resolve.alias,
         ...resolveTsconfigPathsToAlias(),
-
-        // "@lehrlingsquiz/stores": path.join(
-        //   __dirname,
-        //   "src/stores/index.ts"
-        // ),
-        // "@lehrlingsquiz/components": path.join(
-        //   __dirname,
-        //   "src/components/index.ts"
-        // ),
-        // "@lehrlingsquiz/assets": path.join(__dirname, "src/assets/*"),
         theme: path.join(__dirname, "src/theme/index.scss"),
         "theme:variables": path.join(
           __dirname,
