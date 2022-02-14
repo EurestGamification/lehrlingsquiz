@@ -3,6 +3,7 @@ import { Step, StepLabel, Stepper } from "@mui/material";
 import { inject, observer } from "mobx-react";
 import React from "react";
 import { quizStore } from "src/stores/quize.store";
+import Introduction from "./introduction/introduction";
 import {
   CompanyEstimate,
   CustomerOrientation,
@@ -10,15 +11,16 @@ import {
   MenuRecognition
 } from "./questions";
 import "./quiz.scss";
+import Results from "./results/results";
 
-interface QuizProps {}
-
-const questionPages = {
+export const questionPages = {
   0: FoodDetection,
   1: MenuRecognition,
   2: CustomerOrientation,
   3: CompanyEstimate
 } as const;
+
+interface QuizProps {}
 
 const Quiz: React.FC = inject(quizStore.storeKey)(
   observer((props: QuizProps) => {
@@ -30,48 +32,58 @@ const Quiz: React.FC = inject(quizStore.storeKey)(
     return (
       <div className="quiz">
         <Header />
-        <div className="quiz__stepper">
-          <Stepper
-            alternativeLabel
-            activeStep={quizStore.currentQuizStep}
-          >
-            {quizStore.quizSteps.map((label: string) => (
-              <Step key={label}>
-                <StepLabel></StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-        </div>
-        <div className="quiz__content">
-          <ActiveQuizPage />
-        </div>
+        {!quizStore.isQuizStarted ? (
+          <Introduction />
+        ) : quizStore.isQuizEnded ? (
+          <Results />
+        ) : (
+          <>
+            <div className="quiz__stepper">
+              <Stepper
+                alternativeLabel
+                activeStep={quizStore.currentQuizStep}
+              >
+                {quizStore.quizSteps.map((label: string) => (
+                  <Step key={label}>
+                    <StepLabel></StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </div>
+            <div className="quiz__content">
+              <ActiveQuizPage />
+            </div>
 
-        <div className="quiz__actions">
-          <button
-            onClick={() =>
-              quizStore.setCurrentQuizStep(
-                quizStore.currentQuizStep - 1
-              )
-            }
-          >
-            Zurück
-          </button>
-          <button
-            onClick={() =>
-              quizStore.setCurrentQuizStep(
-                quizStore.currentQuizStep + 1
-              )
-            }
-          >
-            Weiter
-          </button>
+            <div className="quiz__actions">
+              <button
+                onClick={() =>
+                  quizStore.setCurrentQuizStep(
+                    quizStore.currentQuizStep - 1
+                  )
+                }
+              >
+                Zurück
+              </button>
+              <button
+                onClick={() =>
+                  quizStore.setCurrentQuizStep(
+                    quizStore.currentQuizStep + 1
+                  )
+                }
+              >
+                Weiter
+              </button>
 
-          <button
-            onClick={() => quizStore.setScore(quizStore.score + 1)}
-          >
-            increase score
-          </button>
-        </div>
+              <button
+                onClick={() =>
+                  quizStore.setScore(quizStore.score + 1)
+                }
+              >
+                increase score
+              </button>
+            </div>
+          </>
+        )}
       </div>
     );
   })

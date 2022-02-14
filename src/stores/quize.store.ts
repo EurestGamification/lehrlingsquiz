@@ -1,4 +1,5 @@
 import { action, makeAutoObservable, observable } from "mobx";
+
 import { IStore, StoreKey } from "./interfaces/store";
 
 export class QuizStore implements IStore {
@@ -13,6 +14,8 @@ export class QuizStore implements IStore {
 
   @observable score: number = 0;
   @observable currentQuizStep: number = 0;
+  @observable isQuizStarted: boolean = false;
+  @observable isQuizEnded: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -28,6 +31,15 @@ export class QuizStore implements IStore {
       return (this.currentQuizStep = this.quizSteps.length - 1);
 
     return (this.currentQuizStep = value);
+  }
+
+  @action startQuiz(): void {
+    this.isQuizStarted = true;
+  }
+
+  @action endQuiz(): void {
+    this.isQuizStarted = false;
+    this.isQuizEnded = true;
   }
 }
 
