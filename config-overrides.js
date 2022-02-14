@@ -26,6 +26,8 @@ function resolveTsconfigPathsToAlias({
   return aliases;
 }
 
+console.log(resolveTsconfigPathsToAlias());
+
 module.exports = function override(config = {}, env) {
   return {
     ...config,
