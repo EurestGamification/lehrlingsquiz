@@ -1,4 +1,4 @@
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import React, { useState } from "react";
 import { Draggable, Droppable } from "../../components";
 
@@ -17,7 +17,7 @@ const Test: React.FC<TestProps> = (props: TestProps) => {
     </DndContext>
   );
 
-  function handleDragEnd(event: any) {
+  function handleDragEnd(event: DragEndEvent) {
     if (event.over && event.over.id === "droppable") {
       setIsDropped(true);
     }

@@ -21,7 +21,8 @@
     "paths": {
       "@lehrlingsquiz/stores": ["./src/stores/index.ts"],
       "@lehrlingsquiz/components": ["./src/components/index.ts"],
-      "@lehrlingsquiz/assets": ["./src/assets/*"]
+      "@lehrlingsquiz/assets": ["./src/assets/*"],
+      "@lehrlingsquiz/util": ["./src/util/index.ts"]
     }
   },
   "include": ["src"],
