@@ -33,19 +33,19 @@ module.exports = function override(config = {}, env) {
       ...config.resolve,
       alias: {
         ...config.resolve.alias,
-        // ...resolveTsconfigPathsToAlias({
-        //   tsconfigPath: "./tsconfig.json",
-        //   webpackConfigBasePath: "../"
-        // }),
+        ...resolveTsconfigPathsToAlias({
+          tsconfigPath: "./tsconfig.json",
+          webpackConfigBasePath: "../"
+        }),
 
-        "@lehrlingsquiz/stores": path.join(
-          __dirname,
-          "src/stores/index.ts"
-        ),
-        "@lehrlingsquiz/components": path.join(
-          __dirname,
-          "src/components/index.ts"
-        ),
+        // "@lehrlingsquiz/stores": path.join(
+        //   __dirname,
+        //   "src/stores/index.ts"
+        // ),
+        // "@lehrlingsquiz/components": path.join(
+        //   __dirname,
+        //   "src/components/index.ts"
+        // ),
         // "@lehrlingsquiz/assets": path.join(__dirname, "src/assets/*"),
         theme: path.join(__dirname, "src/theme/index.scss"),
         "theme:variables": path.join(
