@@ -1,4 +1,17 @@
+@use "theme:variables" as variables;
+
 .bread-schnitzel {
   &__content {
+    &__bowl-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      &__bowl {
+        width: 30%;
+        padding: variables.$spacing-s variables.$spacing-m;
+      }
+    }
   }
 }

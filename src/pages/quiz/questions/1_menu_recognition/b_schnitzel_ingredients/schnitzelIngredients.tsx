@@ -137,10 +137,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
 
   return (
     <div className="schnitzel-ingredients">
-      <DndContext
-        sensors={sensors}
-        onDragEnd={(e: DragEndEvent) => handleDragEnd(e)}
-      >
+      <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <div className="schnitzel-ingredients__content">
           <p className="schnitzel-ingredients__content__instruction">
             Super, und jetzt bereiten wir unsere Hauptspeise zu –

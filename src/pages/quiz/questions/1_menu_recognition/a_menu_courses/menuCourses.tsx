@@ -45,7 +45,7 @@ const MenuCourses: React.FC<MenuCoursesProps> = ({
     setItems(arrayMove(items, oldIndex, newIndex));
   };
 
-  const checkAnswers = () => {
+  const checkAnswers: () => void = () => {
     const isAscending = (a: number[]) =>
       a
         .slice(1)

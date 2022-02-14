@@ -4,13 +4,15 @@ import React, { useState } from "react";
 import MenuCourses from "./a_menu_courses/menuCourses";
 import SchnitzelIngredients from "./b_schnitzel_ingredients/schnitzelIngredients";
 import BreadSchnitzel from "./c_bread_schnitzel/breadSchnitzel";
+import SchnitzelDone from "./d_schnitzel_done/schnitzelDone";
 import { IMenuRecognitionProps } from "./interfaces";
 import "./menuRecognition.scss";
 
 const menuRecognitionSteps = {
   0: MenuCourses,
   1: SchnitzelIngredients,
-  2: BreadSchnitzel
+  2: BreadSchnitzel,
+  3: SchnitzelDone
 } as const;
 
 export const MenuRecognition: React.FC = inject(quizStore.storeKey)(
@@ -28,16 +30,6 @@ export const MenuRecognition: React.FC = inject(quizStore.storeKey)(
           <CurrentPage
             onStepFinished={() => setCurrentStep(currentStep + 1)}
           />
-
-          {/* <button
-            onClick={() =>
-              quizStore.setCurrentQuizStep(
-                quizStore.currentQuizStep + 1
-              )
-            }
-          >
-            Weiter
-          </button> */}
         </div>
       </div>
     );
