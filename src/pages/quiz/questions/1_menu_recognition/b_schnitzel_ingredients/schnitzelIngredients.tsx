@@ -15,7 +15,6 @@ import {
   useSensor,
   useSensors
 } from "@dnd-kit/core";
-import { Test } from "@lehrlingsquiz/components";
 
 const correctIngredients: string[] = [
   "Eier",
