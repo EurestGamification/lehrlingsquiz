@@ -3,12 +3,14 @@ import { inject, observer } from "mobx-react";
 import React, { useState } from "react";
 import MenuCourses from "./a_menu_courses/menuCourses";
 import SchnitzelIngredients from "./b_schnitzel_ingredients/schnitzelIngredients";
+import BreadSchnitzel from "./c_bread_schnitzel/breadSchnitzel";
 import { IMenuRecognitionProps } from "./interfaces";
 import "./menuRecognition.scss";
 
 const menuRecognitionSteps = {
   0: MenuCourses,
-  1: SchnitzelIngredients
+  1: SchnitzelIngredients,
+  2: BreadSchnitzel
 } as const;
 
 export const MenuRecognition: React.FC = inject(quizStore.storeKey)(

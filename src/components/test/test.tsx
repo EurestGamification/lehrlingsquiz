@@ -20,6 +20,12 @@ const Test: React.FC<TestProps> = (props: TestProps) => {
     useSensor(MouseSensor)
   );
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    if (event.over && event.over.id === "droppable") {
+      setIsDropped(true);
+    }
+  };
+
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
       {!isDropped ? draggableMarkup : null}
@@ -28,12 +34,6 @@ const Test: React.FC<TestProps> = (props: TestProps) => {
       </Droppable>
     </DndContext>
   );
-
-  function handleDragEnd(event: DragEndEvent) {
-    if (event.over && event.over.id === "droppable") {
-      setIsDropped(true);
-    }
-  }
 };
 
 export { Test };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IMenuRecognitionProps } from "../interfaces";
 import "./schnitzelIngredients.scss";
 import pan from "@lehrlingsquiz/assets/img/pan.png";
-import { shuffle } from "@lehrlingsquiz/util";
+import { countMatches, shuffle } from "@lehrlingsquiz/util";
 import {
   DndContext,
   DragEndEvent,
@@ -15,6 +15,7 @@ import {
   useSensor,
   useSensors
 } from "@dnd-kit/core";
+import { quizStore } from "@lehrlingsquiz/stores";
 
 const correctIngredients: string[] = [
   "Eier",
@@ -109,18 +110,29 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     useSensor(MouseSensor)
   );
 
+  const resetIngredients: () => void = () => {
+    setIngredients(availaleIngredients);
+    setChosenIngregients([]);
+  };
+
   const handleDragEnd = (event: DragEndEvent) => {
     const ingredient = event.active.id;
-    console.log(ingredient);
 
-    if (event.over && event.over.id === droppablePanId) {
+    if (
+      event.over &&
+      event.over.id === droppablePanId &&
+      chosenIngredients.length < 8
+    ) {
       setIngredients(ingredients.filter(e => e !== ingredient));
       setChosenIngregients([...chosenIngredients, ingredient]);
     }
   };
 
   const checkAnswers: () => void = () => {
-    let additionalPoints = 0;
+    quizStore.setScore(
+      quizStore.score +
+        countMatches(chosenIngredients, correctIngredients)
+    );
   };
 
   return (
@@ -136,7 +148,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
             <br />
             <br />
             Kennst du die typischen Zutaten für ein traditionelles
-            Wiener Schnitzel mit klassischer Beilage? Gib alle
+            Wiener Schnitzel mit klassischer Beilage? Gib alle acht
             richtigen Zutaten in die Pfanne!
           </p>
           <h4>Verfügbare Zutaten</h4>
@@ -160,6 +172,10 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
               </>
             ))}
           </div>
+
+          <button onClick={() => resetIngredients()}>
+            Zutaten Zurücksetzen
+          </button>
           <button
             onClick={() => {
               checkAnswers();
