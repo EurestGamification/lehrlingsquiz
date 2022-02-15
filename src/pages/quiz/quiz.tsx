@@ -8,7 +8,7 @@ import {
   CompanyEstimate,
   CustomerOrientation,
   FoodDetection,
-  MenuRecognition
+  MenuRecognition,
 } from "./questions";
 import "./quiz.scss";
 import Results from "./results/results";
@@ -17,12 +17,12 @@ export const questionPages = {
   0: FoodDetection,
   1: MenuRecognition,
   2: CustomerOrientation,
-  3: CompanyEstimate
+  3: CompanyEstimate,
 } as const;
 
 interface QuizProps {}
 
-const Quiz: React.FC = inject(quizStore.storeKey)(
+const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
   observer((props: QuizProps) => {
     const ActiveQuizPage: React.FC =
       questionPages[

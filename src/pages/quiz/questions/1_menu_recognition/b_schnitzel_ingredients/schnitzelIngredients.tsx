@@ -46,7 +46,7 @@ const availaleIngredients: string[] = [
 
 const droppablePanId = "pan" as const;
 
-const Pan: React.FC = (props: any) => {
+const Pan: React.FC = () => {
   const { isOver, setNodeRef } = useDroppable({
     id: "pan",
   });
