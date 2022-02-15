@@ -112,7 +112,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
   );
 
   const resetIngredients: () => void = () => {
-    setIngredients(availaleIngredients);
+    setIngredients(_.shuffle<string>(availaleIngredients));
     setChosenIngregients([]);
   };
 
