@@ -9,7 +9,7 @@ export class QuizStore implements IStore {
     "Erkennen von Lebensmitteln",
     "Zubereitungsarten & Menüerkennung",
     "Kundenorientierung",
-    "Quiz zum Unternehmen Eurest"
+    "Quiz zum Unternehmen Eurest",
   ] as const;
 
   @observable score: number = 0;
@@ -27,8 +27,10 @@ export class QuizStore implements IStore {
 
   @action setCurrentQuizStep(value: number): number {
     if (value < 0) return (this.currentQuizStep = 0);
-    if (value > this.quizSteps.length - 1)
+    if (value > this.quizSteps.length - 1) {
+      this.endQuiz();
       return (this.currentQuizStep = this.quizSteps.length - 1);
+    }
 
     return (this.currentQuizStep = value);
   }
@@ -45,6 +47,7 @@ export class QuizStore implements IStore {
     this.isQuizStarted = false;
     this.isQuizEnded = false;
     this.setCurrentQuizStep(0);
+    this.setScore(0);
   }
 }
 
