@@ -1,14 +1,10 @@
 {
-  "extends": ["react-app", "shared-config"],
-  "rules": {
-    "additional-rule": "warn"
-  },
+  "extends": ["react-app"],
+  "rules": {},
   "overrides": [
     {
       "files": ["**/*.ts?(x)"],
-      "rules": {
-        "additional-typescript-only-rule": "warn"
-      }
+      "rules": {}
     }
   ]
 }
