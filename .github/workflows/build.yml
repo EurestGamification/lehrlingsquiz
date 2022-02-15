@@ -11,7 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Clean install packages
+      - name: clean install packages
         run: npm ci
-      - name: Build React app
+      - name: lint
+        run: npm run lint
+      - name: build
         run: npm run build
