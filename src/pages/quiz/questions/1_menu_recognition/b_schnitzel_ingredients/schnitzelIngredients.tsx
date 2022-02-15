@@ -12,7 +12,7 @@ import {
   useDraggable,
   useDroppable,
   useSensor,
-  useSensors
+  useSensors,
 } from "@dnd-kit/core";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IMenuRecognitionProps } from "../menuRecognition";
@@ -25,7 +25,7 @@ const correctIngredients: string[] = [
   "Zitrone",
   "Kalbsfleisch",
   "Petersilie",
-  "Butterschmalz"
+  "Butterschmalz",
 ];
 
 const fakeIngredients: string[] = [
@@ -35,22 +35,22 @@ const fakeIngredients: string[] = [
   "Champignons",
   "Nudeln",
   "Schweinefleisch",
-  "Schnittlauch"
+  "Schnittlauch",
 ];
 
 const availaleIngredients: string[] = [
   ...correctIngredients,
-  ...fakeIngredients
+  ...fakeIngredients,
 ];
 
 const droppablePanId = "pan" as const;
 
 const Pan: React.FC = (props: any) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "pan"
+    id: "pan",
   });
   const style = {
-    backgroundColor: isOver ? "#dfdfdf" : undefined
+    backgroundColor: isOver ? "#dfdfdf" : undefined,
   };
 
   return (
@@ -69,15 +69,15 @@ interface DraggableIngredientProps {
 }
 
 const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
-  title
+  title,
 }: DraggableIngredientProps) => {
   const { attributes, listeners, setNodeRef, transform } =
     useDraggable({
-      id: title
+      id: title,
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       }
     : undefined;
 
@@ -96,7 +96,7 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
 interface SchnitzelIngredientsProps extends IMenuRecognitionProps {}
 
 const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
-  onStepFinished
+  onStepFinished,
 }: SchnitzelIngredientsProps) => {
   const [ingredients, setIngredients] = useState<string[]>(
     shuffle<string>(availaleIngredients)
@@ -119,11 +119,10 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     const ingredient = event.active.id;
 
     if (
-      event.over &&
-      event.over.id === droppablePanId &&
+      event.over?.id === droppablePanId &&
       chosenIngredients.length < 8
     ) {
-      setIngredients(ingredients.filter(e => e !== ingredient));
+      setIngredients(ingredients.filter((e) => e !== ingredient));
       setChosenIngregients([...chosenIngredients, ingredient]);
     }
   };
