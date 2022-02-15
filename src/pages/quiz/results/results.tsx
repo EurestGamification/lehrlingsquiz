@@ -18,6 +18,9 @@ const Results: React.FC = inject(quizStore.storeKey)(
           <h4 className="results__content__score">
             {quizStore.score}/16 Punkte
           </h4>
+          <button onClick={() => quizStore.resetQuiz()}>
+            Nochmal spielen
+          </button>
           {quizStore.score >= 12 ? (
             <div>
               Herzlichen Glückwunsch! Du bist perfekt für eine
@@ -36,9 +39,6 @@ const Results: React.FC = inject(quizStore.storeKey)(
             </div>
           )}
         </div>
-        <button onClick={() => quizStore.resetQuiz()}>
-          Nochmal spielen
-        </button>
       </div>
     );
   })
