@@ -1,6 +1,7 @@
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
 import React from "react";
+import apprentice from "@lehrlingsquiz/assets/img/results_apprentice.jpg";
 import "./results.scss";
 
 const Results: React.FC = inject(quizStore.storeKey)(
@@ -9,6 +10,14 @@ const Results: React.FC = inject(quizStore.storeKey)(
       <div className="results">
         <h3>Resultat</h3>
         <div className="results__content">
+          <img
+            className="results__content__apprentice"
+            src={apprentice}
+            alt="Eurest Lehrling"
+          />
+          <h4 className="results__content__score">
+            {quizStore.score}/16 Punkte
+          </h4>
           {quizStore.score >= 12 ? (
             <div>
               Herzlichen Glückwunsch! Du bist perfekt für eine
