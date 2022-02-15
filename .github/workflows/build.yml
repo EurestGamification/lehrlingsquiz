@@ -1,9 +1,9 @@
-name: Build
+name: lehrlingsquiz CI
 
 on:
   push:
-    branches: [main]
-    pull-request: [main]
+    branches: [main, production]
+    pull-request: [main, production]
 
 jobs:
   build:
