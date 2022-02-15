@@ -76,6 +76,7 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
             {questions[currentQuestion].answerOptions.map(
               (answerOption) => (
                 <button
+                  key={answerOption.answerText}
                   onClick={() => checkAnswer(answerOption.isCorrect)}
                   className="answer-item"
                 >

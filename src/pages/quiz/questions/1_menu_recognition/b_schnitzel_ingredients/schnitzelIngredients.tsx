@@ -151,13 +151,10 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
           <h4>Verfügbare Zutaten</h4>
           <p>
             {ingredients.map((ingredient: string, i: number) => (
-              <>
-                <DraggableIngredient
-                  key={ingredient}
-                  title={ingredient}
-                />
+              <span key={ingredient}>
+                <DraggableIngredient title={ingredient} />
                 {i !== ingredients.length - 1 && " "}
-              </>
+              </span>
             ))}
           </p>
           <Pan />
