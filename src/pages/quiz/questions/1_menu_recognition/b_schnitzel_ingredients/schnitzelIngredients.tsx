@@ -16,6 +16,7 @@ import {
 } from "@dnd-kit/core";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IMenuRecognitionProps } from "../menuRecognition";
+import _ from "lodash";
 
 const correctIngredients: string[] = [
   "Eier",
@@ -99,7 +100,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
   onStepFinished,
 }: SchnitzelIngredientsProps) => {
   const [ingredients, setIngredients] = useState<string[]>(
-    shuffle<string>(availaleIngredients)
+    _.shuffle<string>(availaleIngredients)
   );
   const [chosenIngredients, setChosenIngregients] = useState<
     string[]
