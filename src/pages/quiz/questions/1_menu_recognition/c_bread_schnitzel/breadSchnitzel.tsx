@@ -8,7 +8,7 @@ import {
   useDraggable,
   useDroppable,
   useSensor,
-  useSensors
+  useSensors,
 } from "@dnd-kit/core";
 import React, { useState } from "react";
 import bowl from "@lehrlingsquiz/assets/img/bowl.png";
@@ -23,10 +23,10 @@ interface BowlProps {
 
 const Bowl: React.FC<BowlProps> = ({ name }: BowlProps) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: name
+    id: name,
   });
   const style = {
-    backgroundColor: isOver ? "#dfdfdf" : undefined
+    backgroundColor: isOver ? "#dfdfdf" : undefined,
   };
 
   return (
@@ -45,15 +45,15 @@ interface DraggableIngredientProps {
 }
 
 const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
-  title
+  title,
 }: DraggableIngredientProps) => {
   const { attributes, listeners, setNodeRef, transform } =
     useDraggable({
-      id: title
+      id: title,
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       }
     : undefined;
 
@@ -72,13 +72,13 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
 interface BreadSchnitzelProps extends IMenuRecognitionProps {}
 
 const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
-  onStepFinished
+  onStepFinished,
 }: BreadSchnitzelProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ingredients, setIngredients] = useState<string[]>([
     "Eier",
     "Semmelbrösel",
-    "Mehl"
+    "Mehl",
   ]);
   const sensors: SensorDescriptor<SensorOptions>[] = useSensors(
     useSensor(TouchSensor),

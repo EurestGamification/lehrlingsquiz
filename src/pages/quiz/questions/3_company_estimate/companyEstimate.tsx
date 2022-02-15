@@ -9,50 +9,61 @@ import "./companyEstimate.scss";
 
 const questions = [
   {
-    questionText: "Was denkst du, wie viele Mitarbeiter:innen beschäftigt Eurest in ganz Österreich?",
+    questionText:
+      "Was denkst du, wie viele Mitarbeiter:innen beschäftigt Eurest in ganz Österreich?",
     answerOptions: [
-      { answerText: "Ca. 700 Mitarbeiter:innen", isCorrect: false},
-      { answerText: "Ca. 1.100 Mitarbeiter:innen", isCorrect: true},
-      { answerText: "Ca. 1.600 Mitarbeiter:innen", isCorrect: false}
+      { answerText: "Ca. 700 Mitarbeiter:innen", isCorrect: false },
+      { answerText: "Ca. 1.100 Mitarbeiter:innen", isCorrect: true },
+      { answerText: "Ca. 1.600 Mitarbeiter:innen", isCorrect: false },
     ],
   },
   {
-    questionText: "Schätze mal - wie biele Lehrlinge bildet Eurest jedes Jahr im Durchschnitt insgesamt aus?",
+    questionText:
+      "Schätze mal - wie biele Lehrlinge bildet Eurest jedes Jahr im Durchschnitt insgesamt aus?",
     answerOptions: [
-      { answerText: "Durchschnittlich 8 Lehrlinge", isCorrect: false},
-      { answerText: "Durchschnittlich 30 Lehrlinge", isCorrect: true},
-      { answerText: "Durchschnittlich 65 Lehrlinge", isCorrect: false}
-    ]
+      {
+        answerText: "Durchschnittlich 8 Lehrlinge",
+        isCorrect: false,
+      },
+      {
+        answerText: "Durchschnittlich 30 Lehrlinge",
+        isCorrect: true,
+      },
+      {
+        answerText: "Durchschnittlich 65 Lehrlinge",
+        isCorrect: false,
+      },
+    ],
   },
   {
-    questionText: "Wie viele Restaurants betreiben wir deiner Einschätzung nach in ganz Österreich?",
+    questionText:
+      "Wie viele Restaurants betreiben wir deiner Einschätzung nach in ganz Österreich?",
     answerOptions: [
-      { answerText: "Ca. 10 Restaurants", isCorrect: false},
-      { answerText: "Ca. 60 Restaurants", isCorrect: true},
-      { answerText: "Ca. 100 Restaurants", isCorrect: false}
-    ]
-  }
-]
+      { answerText: "Ca. 10 Restaurants", isCorrect: false },
+      { answerText: "Ca. 60 Restaurants", isCorrect: true },
+      { answerText: "Ca. 100 Restaurants", isCorrect: false },
+    ],
+  },
+];
 
 export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
     const checkAnswer = (isCorrect: boolean) => {
-      if (isCorrect){
+      if (isCorrect) {
         quizStore.setScore(quizStore.score + 1);
       }
 
       const nextQuestion = currentQuestion + 1;
       if (nextQuestion < questions.length) {
         setCurrentQuestion(nextQuestion);
-      }
-      else{
+      } else {
         quizStore.setCurrentQuizStep(
           quizStore.currentQuizStep + 1 /*Show Result-Page*/
-        )
+        );
       }
-    }
+    };
 
     return (
       <div className="company-estimate">
@@ -62,7 +73,16 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
             {questions[currentQuestion].questionText}
           </p>
           <div className="answer-section">
-            {questions[currentQuestion].answerOptions.map((answerOption) => <button onClick={() => checkAnswer(answerOption.isCorrect)} className="answer-item">{answerOption.answerText}</button>)}
+            {questions[currentQuestion].answerOptions.map(
+              (answerOption) => (
+                <button
+                  onClick={() => checkAnswer(answerOption.isCorrect)}
+                  className="answer-item"
+                >
+                  {answerOption.answerText}
+                </button>
+              )
+            )}
           </div>
           <button
             onClick={() => {
