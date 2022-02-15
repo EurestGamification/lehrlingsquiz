@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./schnitzelIngredients.scss";
 import pan from "@lehrlingsquiz/assets/img/pan.png";
-import { countMatches, shuffle } from "@lehrlingsquiz/util";
+import { countMatches } from "@lehrlingsquiz/util";
 import {
   DndContext,
   DragEndEvent,
