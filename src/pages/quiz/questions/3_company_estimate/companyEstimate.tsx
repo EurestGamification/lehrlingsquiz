@@ -3,10 +3,6 @@ import { inject, observer } from "mobx-react";
 import React, { useState } from "react";
 import "./companyEstimate.scss";
 
-/*const startQuiz = async () =>{
-
-}*/
-
 const questions = [
   {
     questionText:
@@ -46,23 +42,18 @@ const questions = [
   },
 ];
 
+
+
 export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
   observer(() => {
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+    const [isActive, setActive] = useState<boolean>(false);
 
     const checkAnswer = (isCorrect: boolean) => {
       if (isCorrect) {
         quizStore.setScore(quizStore.score + 1);
       }
-
-      const nextQuestion = currentQuestion + 1;
-      if (nextQuestion < questions.length) {
-        setCurrentQuestion(nextQuestion);
-      } else {
-        quizStore.setCurrentQuizStep(
-          quizStore.currentQuizStep + 1 /*Show Result-Page*/
-        );
-      }
+      setActive(!isActive);
     };
 
     return (
@@ -72,12 +63,12 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
           <p className="company-estimate__content__instruction">
             {questions[currentQuestion].questionText}
           </p>
-          <div className="answer-section">
+          <div className="company-estimate__content__answer-section">
             {questions[currentQuestion].answerOptions.map(
               (answerOption) => (
                 <button
                   onClick={() => checkAnswer(answerOption.isCorrect)}
-                  className="answer-item"
+                  className="company-estimate__content__answer-item"
                 >
                   {answerOption.answerText}
                 </button>
@@ -85,15 +76,22 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
             )}
           </div>
           <button
+            className={!isActive ? "inaktiv" : ""} 
             onClick={() => {
-              quizStore.setCurrentQuizStep(
-                quizStore.currentQuizStep + 1
-              );
-              quizStore.endQuiz();
+              const nextQuestion = currentQuestion + 1;
+              if (nextQuestion < questions.length) {
+                setCurrentQuestion(nextQuestion);
+              } else {
+                quizStore.setCurrentQuizStep(
+                  quizStore.currentQuizStep + 1
+                );
+                quizStore.endQuiz();
+              }
+              setActive(!isActive);
             }}
           >
             Weiter
-          </button>
+          </button> 
         </div>
       </div>
     );
