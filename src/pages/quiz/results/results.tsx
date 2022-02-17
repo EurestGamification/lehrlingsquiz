@@ -22,13 +22,13 @@ const Results: React.FC = inject(quizStore.storeKey)(
             Nochmal spielen
           </button>
           {quizStore.score >= 12 ? (
-            <div>
+            <p>
               Herzlichen Glückwunsch! Du bist perfekt für eine
               Koch-Lehre bei der Eurest geeignet! Bewirb dich gleich
               hier: *Link
-            </div>
+            </p>
           ) : (
-            <div>
+            <p>
               Du hast dich gut geschlagen! Dein Interesse an diesem
               Lehrberuf ist auf alle Fälle da, nur bei ein paar
               kleinen Punkten gibt es noch etwas Nachholbedarf. Das
@@ -36,7 +36,7 @@ const Results: React.FC = inject(quizStore.storeKey)(
               bekommst du dann bei uns vermittelt! Bewerbe dich doch
               gleich hier: *Link* oder lies dir noch ein paar weitere
               Informationen hier *Link* durch!
-            </div>
+            </p>
           )}
         </div>
       </div>

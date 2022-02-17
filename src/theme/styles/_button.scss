@@ -1,0 +1,14 @@
+@use "theme:variables" as variables;
+
+button {
+  outline: 0;
+  border: 0;
+  background-color: variables.$green-100;
+  padding: variables.$spacing-s variables.$spacing-m;
+  color: variables.$white;
+  margin: variables.$spacing-s;
+
+  &:disabled {
+    background-color: variables.$green-25;
+  }
+}
