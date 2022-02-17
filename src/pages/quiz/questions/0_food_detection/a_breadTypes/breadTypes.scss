@@ -1,52 +1,52 @@
 .breadTypes {
-    &__heading {}
+  &__heading {
+  }
 
-    &__content {
-        // display: flex;
+  &__content {
+    display: flex;
 
-        &__droppable {
-            box-sizing: border-box;
+    &__droppable {
+      box-sizing: border-box;
 
-            &__start {
-                width: fit-content;
-                border: 1px solid black;
-                margin: 20px;
-                padding: 20px;
-                min-width: 200px;
-                width: 200px;
-            }
+      &__start {
+        width: fit-content;
+        border: 1px solid black;
+        margin: 20px;
+        padding: 20px;
+        min-width: 200px;
+        width: 200px;
+      }
 
-            &__basket {
-                height: 540px;
-                width: 450px;
-                background-image: url('../../../../../assets/img/Basket.jpg');
-                background-position: center;
-                background-repeat: no-repeat;
-            }
+      &__basket {
+        height: 540px;
+        width: 450px;
+        background-image: url("../../../../../assets/img/Basket.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-            &.isOver {
-                border: 3px solid green;
-            }
-        }
-
-        &__draggable {
-            cursor: grab;
-            outline: 0;
-            background-color: white;
-            border-radius: 4px;
-            padding: 8px 16px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #2d3748;
-            border: 1px solid #cbd5e0;
-            line-height: 26px;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1),
-                0 1px 2px 0 rgba(0, 0, 0, .06);
-
-            &:active {
-                cursor: grabbing;
-            }
-        }
-
+      &.isOver {
+        border: 3px solid green;
+      }
     }
+
+    &__draggable {
+      cursor: grab;
+      outline: 0;
+      background-color: white;
+      border-radius: 4px;
+      padding: 8px 16px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3748;
+      border: 1px solid #cbd5e0;
+      line-height: 26px;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+  }
 }
