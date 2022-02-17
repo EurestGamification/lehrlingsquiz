@@ -2,15 +2,18 @@
 
 .header {
   width: 100%;
-  // height: variables.$vertical-spacer-m;
-  // padding: variables.$spacing-l 0;
   display: flex;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
+  margin-bottom: variables.$spacing-m;
 
   &__logo {
     width: variables.$spacing-5xl;
     margin-right: variables.$spacing-m;
+  }
+
+  &__title {
+    text-transform: uppercase;
   }
 
   &__score {

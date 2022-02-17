@@ -10,9 +10,11 @@ const stores = {
 
 const App: React.FC = () => {
   return (
-    <StoreProvider {...stores}>
-      <fromRouter.default />
-    </StoreProvider>
+    <div className="App">
+      <StoreProvider {...stores}>
+        <fromRouter.default />
+      </StoreProvider>
+    </div>
   );
 };
 
