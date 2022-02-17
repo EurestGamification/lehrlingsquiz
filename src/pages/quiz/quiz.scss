@@ -6,8 +6,22 @@
   height: 100vh;
   padding: variables.$spacing-m variables.$horizontal-spacer-xs;
 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: -1;
+    background-image: url("../../assets/img/chef.jpeg");
+    background-size: cover;
+  }
+
   @include mixins.for-desktop {
     padding: variables.$spacing-m variables.$horizontal-spacer-m;
+    background-image: none;
   }
 
   &__stepper {
