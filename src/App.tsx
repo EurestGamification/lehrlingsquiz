@@ -6,21 +6,21 @@ import { quizStore } from "./stores/quize.store";
 import {
   createTheme,
   Theme,
-  ThemeProvider,
+  ThemeProvider
 } from "@mui/material/styles";
 import { colors } from "./theme";
 
 const stores = {
-  quizStore,
+  quizStore
 } as const;
 
 const muiTheme: Theme = createTheme({
   palette: {
     primary: {
       main: `${colors.green_100}`,
-      "100": colors.green_25,
-    },
-  },
+      "100": colors.green_25
+    }
+  }
 });
 
 const App: React.FC = () => {
@@ -36,3 +36,5 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// hallo timon
