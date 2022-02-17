@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import {
   arrayMove,
   SortableContainer,
-  SortableElement,
+  SortableElement
 } from "react-sortable-hoc";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import "./menuCourses.scss";
@@ -42,13 +42,13 @@ const SortableList = SortableContainer(({ items }: any) => {
 interface MenuCoursesProps extends IMenuRecognitionProps {}
 
 const MenuCourses: React.FC<MenuCoursesProps> = ({
-  onStepFinished,
+  onStepFinished
 }: MenuCoursesProps) => {
   const [items, setItems] = useState<MenuItems>([
     { id: 1, name: "Suppe" },
     { id: 3, name: "Dessert" },
     { id: 2, name: "Hauptspeise" },
-    { id: 0, name: "Kalte Vorspeise" },
+    { id: 0, name: "Kalte Vorspeise" }
   ]);
 
   const onSortEnd = ({ oldIndex, newIndex }: any) => {
