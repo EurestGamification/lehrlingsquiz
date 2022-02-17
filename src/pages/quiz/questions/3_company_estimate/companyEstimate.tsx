@@ -42,8 +42,6 @@ const questions = [
   },
 ];
 
-
-
 export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -53,7 +51,9 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
       if (isCorrect) {
         quizStore.setScore(quizStore.score + 1);
       }
-      setActive(!isActive);
+      if (!isActive){
+        setActive(!isActive);
+      }
     };
 
     return (
@@ -67,9 +67,9 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
             {questions[currentQuestion].answerOptions.map(
               (answerOption) => (
                 <button
-                  key={answerOption.answerText}
                   onClick={() => checkAnswer(answerOption.isCorrect)}
-                  className="company-estimate__content__answer-item"
+                  className='company-estimate__content__answer-item'
+                  disabled = {isActive}
                 >
                   {answerOption.answerText}
                 </button>
@@ -82,7 +82,8 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
               const nextQuestion = currentQuestion + 1;
               if (nextQuestion < questions.length) {
                 setCurrentQuestion(nextQuestion);
-              } else {
+              } 
+              else {
                 quizStore.setCurrentQuizStep(
                   quizStore.currentQuizStep + 1
                 );
