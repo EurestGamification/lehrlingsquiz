@@ -3,7 +3,6 @@
 
 .quiz {
   width: 100%;
-  height: 100vh;
   padding: variables.$spacing-m variables.$horizontal-spacer-xs;
 
   &::before {
@@ -17,11 +16,14 @@
     z-index: -1;
     background-image: url("../../assets/img/chef.jpeg");
     background-size: cover;
+
+    @include mixins.for-desktop {
+      background-image: none;
+    }
   }
 
   @include mixins.for-desktop {
     padding: variables.$spacing-m variables.$horizontal-spacer-m;
-    background-image: none;
   }
 
   &__stepper {

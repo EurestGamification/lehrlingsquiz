@@ -7,6 +7,7 @@ button {
   padding: variables.$spacing-s variables.$spacing-m;
   color: variables.$white;
   margin: variables.$spacing-s;
+  cursor: pointer;
 
   &:disabled {
     background-color: variables.$green-25;
