@@ -1,5 +1,11 @@
 import { Header } from "@lehrlingsquiz/components";
-import { Step, StepLabel, Stepper } from "@mui/material";
+import {
+  Step,
+  StepIconProps,
+  StepLabel,
+  Stepper,
+  styled,
+} from "@mui/material";
 import { inject, observer } from "mobx-react";
 import React from "react";
 import { quizStore } from "src/stores/quize.store";
@@ -19,6 +25,40 @@ export const questionPages = {
   2: CustomerOrientation,
   3: CompanyEstimate,
 } as const;
+
+const ColorlibStepIconRoot = styled("div")<{
+  ownerState: { completed?: boolean; active?: boolean };
+}>(() => ({
+  backgroundColor: "#00a13a",
+  color: "#fff",
+  height: 25,
+  width: 25,
+  paddingTop: "2px",
+  display: "flex",
+  borderRadius: "50%",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+const ColorlibStepIcon = (props: StepIconProps) => {
+  const { active, completed, className } = props;
+
+  const icons: { [index: string]: string } = {
+    1: "1",
+    2: "2",
+    3: "3",
+    4: "4",
+  };
+
+  return (
+    <ColorlibStepIconRoot
+      ownerState={{ completed, active }}
+      className={className}
+    >
+      {icons[String(props.icon)]}
+    </ColorlibStepIconRoot>
+  );
+};
 
 interface QuizProps {}
 
@@ -46,7 +86,9 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
               >
                 {quizStore.quizSteps.map((label: string) => (
                   <Step key={label}>
-                    <StepLabel></StepLabel>
+                    <StepLabel
+                      StepIconComponent={ColorlibStepIcon}
+                    ></StepLabel>
                   </Step>
                 ))}
               </Stepper>
