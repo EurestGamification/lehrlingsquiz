@@ -1,9 +1,10 @@
 import { quizStore } from "@lehrlingsquiz/stores";
+import { KeyboardDoubleArrowDown } from "@mui/icons-material";
 import React, { useState } from "react";
 import {
   arrayMove,
   SortableContainer,
-  SortableElement
+  SortableElement,
 } from "react-sortable-hoc";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import "./menuCourses.scss";
@@ -19,11 +20,16 @@ const SortableList = SortableContainer(({ items }: any) => {
   return (
     <div className="menu-courses__items">
       {items.map((value: any, index: number) => (
-        <SortableItem
-          key={`item-${value}`}
-          index={index}
-          value={value}
-        />
+        <>
+          <SortableItem
+            key={`item-${value}`}
+            index={index}
+            value={value}
+          />
+          {index + 1 !== items.length && (
+            <KeyboardDoubleArrowDown className="menu-courses__items__item__connector" />
+          )}
+        </>
       ))}
     </div>
   );
@@ -32,13 +38,13 @@ const SortableList = SortableContainer(({ items }: any) => {
 interface MenuCoursesProps extends IMenuRecognitionProps {}
 
 const MenuCourses: React.FC<MenuCoursesProps> = ({
-  onStepFinished
+  onStepFinished,
 }: MenuCoursesProps) => {
   const [items, setItems] = useState<MenuItems>([
     { id: 1, name: "Suppe" },
     { id: 3, name: "Dessert" },
     { id: 2, name: "Hauptspeise" },
-    { id: 0, name: "Kalte Vorspeise" }
+    { id: 0, name: "Kalte Vorspeise" },
   ]);
 
   const onSortEnd = ({ oldIndex, newIndex }: any) => {
@@ -50,9 +56,9 @@ const MenuCourses: React.FC<MenuCoursesProps> = ({
       a
         .slice(1)
         .map((e, i) => e > a[i])
-        .every(x => x);
+        .every((x) => x);
 
-    if (isAscending(items.map(e => e.id)))
+    if (isAscending(items.map((e) => e.id)))
       quizStore.setScore(quizStore.score + 1);
   };
 
@@ -66,7 +72,7 @@ const MenuCourses: React.FC<MenuCoursesProps> = ({
           Menübestandteile in die richtige Reihenfolge.
         </p>
         <SortableList
-          items={items.map(e => e.name)}
+          items={items.map((e) => e.name)}
           onSortEnd={onSortEnd}
         />
         <button

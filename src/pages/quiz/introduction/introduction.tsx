@@ -8,7 +8,7 @@ const Introduction: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     return (
       <div className="introduction">
-        <h2>Willkommen!</h2>
+        {/* <h2>Willkommen!</h2> */}
         <img
           className="introduction__claim"
           src={claim}

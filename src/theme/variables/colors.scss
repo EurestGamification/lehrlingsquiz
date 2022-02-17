@@ -1,5 +1,8 @@
 @use "sass:color" as color;
 
+//white
+$white: rgba(255, 255, 255, 1);
+
 // schiefer
 $schiefer-100: rgba(36, 37, 43, 1);
 $schiefer-75: rgba($schiefer-100, 0.75);

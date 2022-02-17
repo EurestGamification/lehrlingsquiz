@@ -4,7 +4,14 @@
   &__items {
     &__item {
       padding: variables.$spacing-s variables.$spacing-m;
-      background-color: rgb(223, 223, 223);
+      background-color: variables.$schiefer-100;
+      color: variables.$white;
+      margin-bottom: variables.$spacing-s;
+
+      &__connector {
+        display: block !important;
+        margin: variables.$spacing-s auto;
+      }
     }
   }
 }
