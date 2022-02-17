@@ -8,6 +8,7 @@ import {
 } from "react-sortable-hoc";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import "./menuCourses.scss";
+import { colors } from "../../../../../theme";
 
 export type MenuItem = { id: number; name: string };
 export type MenuItems = MenuItem[];
@@ -27,7 +28,10 @@ const SortableList = SortableContainer(({ items }: any) => {
             value={value}
           />
           {index + 1 !== items.length && (
-            <KeyboardDoubleArrowDown className="menu-courses__items__item__connector" />
+            <KeyboardDoubleArrowDown
+              className="menu-courses__items__item__connector"
+              sx={{ color: colors.green_100 }}
+            />
           )}
         </>
       ))}
