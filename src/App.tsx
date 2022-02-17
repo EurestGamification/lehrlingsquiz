@@ -36,5 +36,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-// hallo timon
