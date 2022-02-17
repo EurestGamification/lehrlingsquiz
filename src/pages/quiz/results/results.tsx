@@ -8,7 +8,7 @@ const Results: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     return (
       <div className="results">
-        <h3>Resultat</h3>
+        <h2>Resultat</h2>
         <div className="results__content">
           <img
             className="results__content__apprentice"

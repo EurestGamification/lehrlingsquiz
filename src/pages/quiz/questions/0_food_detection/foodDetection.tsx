@@ -7,7 +7,7 @@ export const FoodDetection: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     return (
       <div className="food-detection">
-        <h3>{quizStore.quizSteps[0]}</h3>
+        <h2>{quizStore.quizSteps[0]}</h2>
         <div className="food-detection__content">
           <button
             onClick={() =>

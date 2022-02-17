@@ -26,7 +26,7 @@ export const CustomerOrientation: React.FC = inject(
 
     return (
       <div className="customer-orientation">
-        <h3>{quizStore.quizSteps[2]}</h3>
+        <h2>{quizStore.quizSteps[2]}</h2>
         <div className="customer-orientation__content">
           <CurrentPage
             onStepFinished={() => setCurrentStep(currentStep + 1)}
