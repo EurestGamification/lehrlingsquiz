@@ -1,5 +1,11 @@
 import { Header } from "@lehrlingsquiz/components";
-import { Step, StepLabel, Stepper } from "@mui/material";
+import {
+  Step,
+  StepIconProps,
+  StepLabel,
+  Stepper,
+  styled,
+} from "@mui/material";
 import { inject, observer } from "mobx-react";
 import React from "react";
 import { quizStore } from "src/stores/quize.store";
@@ -8,7 +14,7 @@ import {
   CompanyEstimate,
   CustomerOrientation,
   FoodDetection,
-  MenuRecognition
+  MenuRecognition,
 } from "./questions";
 import "./quiz.scss";
 import Results from "./results/results";
@@ -17,12 +23,51 @@ export const questionPages = {
   0: FoodDetection,
   1: MenuRecognition,
   2: CustomerOrientation,
-  3: CompanyEstimate
+  3: CompanyEstimate,
 } as const;
+
+const ColorlibStepIconRoot = styled("div")<{
+  ownerState: { completed?: boolean; active?: boolean };
+}>(({ theme, ownerState }) => ({
+  backgroundColor:
+    ownerState.active || ownerState.completed
+      ? theme.palette.primary.main
+      : theme.palette.primary[
+          "100" as keyof typeof theme.palette.primary
+        ],
+  color: "#fff",
+  height: 25,
+  width: 25,
+  paddingTop: "2px",
+  display: "flex",
+  borderRadius: "50%",
+  justifyContent: "center",
+  alignItems: "center",
+}));
+
+const ColorlibStepIcon = (props: StepIconProps) => {
+  const { active, completed, className } = props;
+
+  const icons: { [index: string]: string } = {
+    1: "1",
+    2: "2",
+    3: "3",
+    4: "4",
+  };
+
+  return (
+    <ColorlibStepIconRoot
+      ownerState={{ completed, active }}
+      className={className}
+    >
+      {icons[String(props.icon)]}
+    </ColorlibStepIconRoot>
+  );
+};
 
 interface QuizProps {}
 
-const Quiz: React.FC = inject(quizStore.storeKey)(
+const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
   observer((props: QuizProps) => {
     const ActiveQuizPage: React.FC =
       questionPages[
@@ -46,7 +91,9 @@ const Quiz: React.FC = inject(quizStore.storeKey)(
               >
                 {quizStore.quizSteps.map((label: string) => (
                   <Step key={label}>
-                    <StepLabel></StepLabel>
+                    <StepLabel
+                      StepIconComponent={ColorlibStepIcon}
+                    ></StepLabel>
                   </Step>
                 ))}
               </Stepper>
@@ -55,7 +102,7 @@ const Quiz: React.FC = inject(quizStore.storeKey)(
               <ActiveQuizPage />
             </div>
 
-            <div className="quiz__actions">
+            {/* <div className="quiz__actions">
               <button
                 onClick={() =>
                   quizStore.setScore(quizStore.score + 1)
@@ -63,7 +110,7 @@ const Quiz: React.FC = inject(quizStore.storeKey)(
               >
                 increase score
               </button>
-            </div>
+            </div> */}
           </>
         )}
       </div>

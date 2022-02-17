@@ -1,5 +1,13 @@
 {
-  "extends": ["react-app"],
-  "rules": {},
+  "extends": ["react-app", "eslint:recommended"],
+  "rules": {
+    "no-unused-vars": "error",
+    "quotes": "error",
+    "no-irregular-whitespace": "error",
+    "no-console": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "arrow-parens": "error"
+  },
   "overrides": []
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./schnitzelIngredients.scss";
 import pan from "@lehrlingsquiz/assets/img/pan.png";
-import { countMatches, shuffle } from "@lehrlingsquiz/util";
+import { countMatches } from "@lehrlingsquiz/util";
 import {
   DndContext,
   DragEndEvent,
@@ -12,10 +12,11 @@ import {
   useDraggable,
   useDroppable,
   useSensor,
-  useSensors
+  useSensors,
 } from "@dnd-kit/core";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IMenuRecognitionProps } from "../menuRecognition";
+import _ from "lodash";
 
 const correctIngredients: string[] = [
   "Eier",
@@ -25,7 +26,7 @@ const correctIngredients: string[] = [
   "Zitrone",
   "Kalbsfleisch",
   "Petersilie",
-  "Butterschmalz"
+  "Butterschmalz",
 ];
 
 const fakeIngredients: string[] = [
@@ -35,22 +36,22 @@ const fakeIngredients: string[] = [
   "Champignons",
   "Nudeln",
   "Schweinefleisch",
-  "Schnittlauch"
+  "Schnittlauch",
 ];
 
 const availaleIngredients: string[] = [
   ...correctIngredients,
-  ...fakeIngredients
+  ...fakeIngredients,
 ];
 
 const droppablePanId = "pan" as const;
 
-const Pan: React.FC = (props: any) => {
+const Pan: React.FC = () => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "pan"
+    id: "pan",
   });
   const style = {
-    backgroundColor: isOver ? "#dfdfdf" : undefined
+    backgroundColor: isOver ? "#dfdfdf" : undefined,
   };
 
   return (
@@ -69,15 +70,15 @@ interface DraggableIngredientProps {
 }
 
 const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
-  title
+  title,
 }: DraggableIngredientProps) => {
   const { attributes, listeners, setNodeRef, transform } =
     useDraggable({
-      id: title
+      id: title,
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       }
     : undefined;
 
@@ -96,10 +97,10 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
 interface SchnitzelIngredientsProps extends IMenuRecognitionProps {}
 
 const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
-  onStepFinished
+  onStepFinished,
 }: SchnitzelIngredientsProps) => {
   const [ingredients, setIngredients] = useState<string[]>(
-    shuffle<string>(availaleIngredients)
+    _.shuffle<string>(availaleIngredients)
   );
   const [chosenIngredients, setChosenIngregients] = useState<
     string[]
@@ -111,7 +112,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
   );
 
   const resetIngredients: () => void = () => {
-    setIngredients(availaleIngredients);
+    setIngredients(_.shuffle<string>(availaleIngredients));
     setChosenIngregients([]);
   };
 
@@ -119,11 +120,10 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     const ingredient = event.active.id;
 
     if (
-      event.over &&
-      event.over.id === droppablePanId &&
+      event.over?.id === droppablePanId &&
       chosenIngredients.length < 8
     ) {
-      setIngredients(ingredients.filter(e => e !== ingredient));
+      setIngredients(ingredients.filter((e) => e !== ingredient));
       setChosenIngregients([...chosenIngredients, ingredient]);
     }
   };
@@ -151,13 +151,10 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
           <h4>Verfügbare Zutaten</h4>
           <p>
             {ingredients.map((ingredient: string, i: number) => (
-              <>
-                <DraggableIngredient
-                  key={ingredient}
-                  title={ingredient}
-                />
+              <span key={ingredient}>
+                <DraggableIngredient title={ingredient} />
                 {i !== ingredients.length - 1 && " "}
-              </>
+              </span>
             ))}
           </p>
           <Pan />

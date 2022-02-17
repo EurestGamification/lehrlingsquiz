@@ -23,7 +23,7 @@ export const FoodDetection: React.FC = inject(quizStore.storeKey)(
 
     return (
       <div className="foodDetection">
-        <h3>{quizStore.quizSteps[0]}</h3>
+        <h2>{quizStore.quizSteps[0]}</h2>
         <div className="foodDetection__content">
           <CurrentPage onStepFinished={() => setCurrentStep(currentStep + 1)} />
         </div>

@@ -1,3 +1,22 @@
-$red: #f00;
-$green: #0f0;
-$blue: #00f;
+@use "sass:color" as color;
+
+//white
+$white: rgba(255, 255, 255, 1);
+
+// schiefer
+$schiefer-100: rgba(36, 37, 43, 1);
+$schiefer-75: rgba($schiefer-100, 0.75);
+$schiefer-50: rgba($schiefer-100, 0.5);
+$schiefer-25: rgba($schiefer-100, 0.25);
+
+// ivory
+$ivory-100: rgba(250, 244, 232, 1);
+$ivory-75: rgba($ivory-100, 0.75);
+$ivory-50: rgba($ivory-100, 0.5);
+$ivory-25: rgba($ivory-100, 0.25);
+
+//green
+$green-100: rgba(0, 161, 58, 1);
+$green-75: rgba($green-100, 0.75);
+$green-50: rgba($green-100, 0.5);
+$green-25: rgba($green-100, 0.25);
