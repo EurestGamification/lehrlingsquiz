@@ -5,7 +5,7 @@ import { Provider as StoreProvider } from "mobx-react";
 import { quizStore } from "./stores/quize.store";
 
 const stores = {
-  quizStore
+  quizStore,
 } as const;
 
 const App: React.FC = () => {
