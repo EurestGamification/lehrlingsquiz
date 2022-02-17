@@ -10,7 +10,9 @@ export const Header: React.FC = inject(quizStore.storeKey)(
       <div className="header">
         <img src={logo} alt="Eurest Logo" className="header__logo" />
         <h1 className="header__title">Lehrlingsquiz</h1>
-        <p className="header__score">Punkte: {quizStore.score}</p>
+        {quizStore.isQuizStarted && (
+          <p className="header__score">Punkte: {quizStore.score}</p>
+        )}
       </div>
     );
   })

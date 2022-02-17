@@ -2,6 +2,7 @@
 
 .introduction {
   &__claim {
+    padding-left: variables.$spacing-xl;
     width: 100%;
     background-color: variables.$schiefer-100;
     fill: variables.$green-100;
