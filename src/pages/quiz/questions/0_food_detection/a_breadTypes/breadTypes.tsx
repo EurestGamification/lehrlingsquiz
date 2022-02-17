@@ -10,7 +10,7 @@ import {
   SensorOptions,
   TouchSensor,
   useSensor,
-  useSensors,
+  useSensors
 } from "@dnd-kit/core";
 import { Droppable } from "../dnd/droppable";
 import { Draggable } from "../dnd/draggable";
@@ -22,7 +22,7 @@ interface DnDs {
 }
 
 const BreadTypes: React.FC<BreadTypesProps> = ({
-  onStepFinished,
+  onStepFinished
 }: BreadTypesProps) => {
   const sensors: SensorDescriptor<SensorOptions>[] = useSensors(
     useSensor(TouchSensor),
@@ -33,7 +33,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
     Start: [],
     Weißbrot: ["Semmel", "Toastbrot", "Vollkornbrot"],
     Gebäck: ["Laugenstangerl"],
-    Schwarzbrot: ["Roggenbrot"],
+    Schwarzbrot: ["Roggenbrot"]
   };
 
   const [currentDnDs, setCurrentDnDs] = useState<DnDs>({
@@ -42,11 +42,11 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
       "Toastbrot",
       "Semmel",
       "Vollkornbrot",
-      "Roggenbrot",
+      "Roggenbrot"
     ],
     Weißbrot: [],
     Gebäck: [],
-    Schwarzbrot: [],
+    Schwarzbrot: []
   });
 
   return (
@@ -68,7 +68,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
               key={bTi}
               className={
                 "breadTypes__content__droppable breadTypes__content__droppable__" +
-                (breadType == "Start" ? "start" : "basket")
+                (breadType === "Start" ? "start" : "basket")
               }
             >
               {currentDnDs[breadType].map((bread, bi) => (
@@ -90,12 +90,12 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
 
   function handleDragEnd(event: DragEndEvent) {
     if (event.over) {
-      for (var breadType in currentDnDs) {
+      for (const breadType in currentDnDs) {
         const index = currentDnDs[breadType].indexOf(event.active.id);
         if (index > -1) {
-          if (breadType == event.over.id) return;
+          if (breadType === event.over.id) return;
 
-          var tempDnDs: DnDs = { ...currentDnDs };
+          const tempDnDs: DnDs = { ...currentDnDs };
           tempDnDs[breadType].splice(index, 1);
           tempDnDs[event.over.id].push(event.active.id);
           setCurrentDnDs(tempDnDs);
@@ -107,8 +107,8 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
 
   function checkAnswers() {
     let correct: number = 0;
-    for (var breadType in DnDsSolution) {
-      for (var bread of DnDsSolution[breadType]) {
+    for (const breadType in DnDsSolution) {
+      for (const bread of DnDsSolution[breadType]) {
         if (currentDnDs[breadType].indexOf(bread) > -1) correct++;
       }
     }
@@ -119,7 +119,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
       (sum, k) => sum + DnDsSolution[k].length,
       0
     );
-    const points: number = correct == DnDsCount ? 1 : 0;
+    const points: number = correct === DnDsCount ? 1 : 0;
 
     points && quizStore.setScore(quizStore.score + 1);
     // alert(`Points: ${points}\nCorrect: ${correct}/${DnDsCount}`);
