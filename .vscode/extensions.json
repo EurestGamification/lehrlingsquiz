@@ -1,6 +1,10 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "dsznajder.es7-react-js-snippets"
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "ambar.bundle-size",
+    "dbaeumer.vscode-eslint",
+    "syler.sass-indented"
   ]
 }

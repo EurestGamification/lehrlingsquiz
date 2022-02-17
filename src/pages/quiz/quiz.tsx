@@ -102,7 +102,7 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
               <ActiveQuizPage />
             </div>
 
-            <div className="quiz__actions">
+            {/* <div className="quiz__actions">
               <button
                 onClick={() =>
                   quizStore.setScore(quizStore.score + 1)
@@ -110,7 +110,7 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
               >
                 increase score
               </button>
-            </div>
+            </div> */}
           </>
         )}
       </div>
