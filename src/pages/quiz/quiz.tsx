@@ -28,8 +28,13 @@ export const questionPages = {
 
 const ColorlibStepIconRoot = styled("div")<{
   ownerState: { completed?: boolean; active?: boolean };
-}>(() => ({
-  backgroundColor: "#00a13a",
+}>(({ theme, ownerState }) => ({
+  backgroundColor:
+    ownerState.active || ownerState.completed
+      ? theme.palette.primary.main
+      : theme.palette.primary[
+          "100" as keyof typeof theme.palette.primary
+        ],
   color: "#fff",
   height: 25,
   width: 25,
