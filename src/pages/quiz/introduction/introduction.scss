@@ -1,5 +1,8 @@
+@use "theme:variables" as variables;
+
 .introduction {
   &__claim {
     width: 100%;
+    background-color: variables.$schiefer-100;
   }
 }
