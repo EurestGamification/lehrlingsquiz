@@ -74,6 +74,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
                   {breadType}
                 </span>
               )}
+              {/* // TODO make drag overlay with modifier for 'restrictWindowEdge' */}
               {currentDnDs[breadType].map((bread, bi) => (
                 <Draggable
                   id={bread}

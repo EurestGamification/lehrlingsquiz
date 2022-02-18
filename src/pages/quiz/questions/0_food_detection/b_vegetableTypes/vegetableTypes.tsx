@@ -14,9 +14,8 @@ const VegetableTypes: React.FC<VegetableTypesProps> = inject(
       <div className="vegetableTypes">
         <p className="vegetableTypes__heading">
           Als Koch:Köchin arbeitet man täglich mit frischem Gemüse.
-          Erkennst du die verschiedenen Gemüsesorten?
-          <br />
-          Ziehe das Gemüse zu seiner richtigen Bezeichnung.
+          Erkennst du die verschiedenen Gemüsesorten? Ziehe die
+          Bezeichnung zu dem richtigen Gemüse.
         </p>
         <button
           onClick={() =>
