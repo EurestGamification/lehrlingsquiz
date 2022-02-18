@@ -4,7 +4,7 @@ import {
   StepIconProps,
   StepLabel,
   Stepper,
-  styled,
+  styled
 } from "@mui/material";
 import { inject, observer } from "mobx-react";
 import React from "react";
@@ -14,7 +14,7 @@ import {
   CompanyEstimate,
   CustomerOrientation,
   FoodDetection,
-  MenuRecognition,
+  MenuRecognition
 } from "./questions";
 import "./quiz.scss";
 import Results from "./results/results";
@@ -23,7 +23,7 @@ export const questionPages = {
   0: FoodDetection,
   1: MenuRecognition,
   2: CustomerOrientation,
-  3: CompanyEstimate,
+  3: CompanyEstimate
 } as const;
 
 const ColorlibStepIconRoot = styled("div")<{
@@ -43,6 +43,7 @@ const ColorlibStepIconRoot = styled("div")<{
   borderRadius: "50%",
   justifyContent: "center",
   alignItems: "center",
+  alignSelf: "flex-start"
 }));
 
 const ColorlibStepIcon = (props: StepIconProps) => {
@@ -52,7 +53,7 @@ const ColorlibStepIcon = (props: StepIconProps) => {
     1: "1",
     2: "2",
     3: "3",
-    4: "4",
+    4: "4"
   };
 
   return (
