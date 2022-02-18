@@ -11,21 +11,24 @@ const foodDetectionSteps = {
 } as const;
 
 export interface IFoodDetectionProps {
-  onStepFinished: () => any
+  onStepFinished: () => any;
 }
 
 export const FoodDetection: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     const [currentStep, setCurrentStep] = useState<number>(0);
-    const CurrentPage: React.FC<IFoodDetectionProps> = foodDetectionSteps[
-      currentStep as keyof typeof foodDetectionSteps
-    ];
+    const CurrentPage: React.FC<IFoodDetectionProps> =
+      foodDetectionSteps[
+        currentStep as keyof typeof foodDetectionSteps
+      ];
 
     return (
       <div className="foodDetection">
-        <h2>{quizStore.quizSteps[0]}</h2>
+        <h3>{quizStore.quizSteps[0]}</h3>
         <div className="foodDetection__content">
-          <CurrentPage onStepFinished={() => setCurrentStep(currentStep + 1)} />
+          <CurrentPage
+            onStepFinished={() => setCurrentStep(currentStep + 1)}
+          />
         </div>
       </div>
     );

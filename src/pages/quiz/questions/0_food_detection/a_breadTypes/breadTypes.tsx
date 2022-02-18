@@ -53,7 +53,6 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
     <div className="breadTypes">
       <p className="breadTypes__heading">
         Sortiere die verschiedenen Brote zu den richtigen Brotsorten.
-        <br />
         Du kannst die Brote einfach anklicken und in den passenden
         Brotkorb fallen lassen.
       </p>

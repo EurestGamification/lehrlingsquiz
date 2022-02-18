@@ -1,32 +1,64 @@
+@use "theme:variables" as variables;
+@use "theme:mixins" as mixins;
+
 .breadTypes {
   &__heading {
   }
 
   &__content {
-    display: flex;
+    display: grid;
+    margin-bottom: variables.$spacing-l;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Start Start Start"
+      ". . .";
 
     &__droppable {
       box-sizing: border-box;
 
       &__start {
-        width: fit-content;
         border: 1px solid black;
-        margin: 20px;
-        padding: 20px;
-        min-width: 200px;
-        width: 200px;
+        padding: variables.$spacing-xs;
+        margin-bottom: variables.$spacing-l;
+        min-height: 40px;
+        width: 100%;
+        height: fit-content;
+        grid-area: Start;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        @include mixins.for-desktop {
+          width: fit-content;
+          min-height: 50px;
+          min-width: 300px;
+        }
       }
 
       &__basket {
-        height: 540px;
-        width: 450px;
+        height: 145px;
+        width: 110px;
         background-image: url("../../../../../assets/img/Basket.jpg");
         background-position: center;
         background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-self: center;
+
+        @include mixins.for-desktop {
+          height: 270px;
+          width: 200px;
+        }
       }
 
       &.isOver {
-        border: 3px solid green;
+        border: 3px solid variables.$green-100;
       }
     }
 
@@ -34,15 +66,16 @@
       cursor: grab;
       outline: 0;
       background-color: white;
-      border-radius: 4px;
-      padding: 8px 16px;
-      font-size: 16px;
-      font-weight: 600;
-      color: #2d3748;
-      border: 1px solid #cbd5e0;
-      line-height: 26px;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-        0 1px 2px 0 rgba(0, 0, 0, 0.06);
+      color: black;
+      border: 2px solid variables.$green-100;
+      margin: variables.$spacing-xs;
+      padding: variables.$spacing-xs variables.$spacing-s;
+
+      @include mixins.for-desktop {
+        margin: variables.$spacing-s;
+        padding: variables.$spacing-s variables.$spacing-m;
+        border: 3px solid variables.$green-100;
+      }
 
       &:active {
         cursor: grabbing;
