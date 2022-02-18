@@ -11,6 +11,10 @@
       &__bowl {
         width: 30%;
         padding: variables.$spacing-s variables.$spacing-m;
+
+        &.bowl-disabled {
+          opacity: 0.3;
+        }
       }
     }
   }
