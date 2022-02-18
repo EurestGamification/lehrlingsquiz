@@ -59,7 +59,6 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
       <div className="breadTypes__content">
         {/* // ! DnD out of position when scrolling */}
         <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-          {/* // TODO Design droppables side by side e.g. css grid */}
           {/* // TODO make droppables to sortables */}
           {Object.keys(currentDnDs).map((breadType, bTi) => (
             <Droppable
@@ -70,6 +69,11 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
                 (breadType === "Start" ? "start" : "basket")
               }
             >
+              {breadType !== "Start" && (
+                <span className="breadTypes__content__droppable__basket__title">
+                  {breadType}
+                </span>
+              )}
               {currentDnDs[breadType].map((bread, bi) => (
                 <Draggable
                   id={bread}
