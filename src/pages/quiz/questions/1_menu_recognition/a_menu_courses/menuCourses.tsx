@@ -8,7 +8,7 @@ import {
 } from "react-sortable-hoc";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import "./menuCourses.scss";
-import { colors } from "../../../../../theme";
+import { colors } from "@lehrlingsquiz/theme";
 
 export type MenuItem = { id: number; name: string };
 export type MenuItems = MenuItem[];

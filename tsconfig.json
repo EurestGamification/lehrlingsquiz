@@ -22,9 +22,10 @@
       "@lehrlingsquiz/stores": ["./src/stores/index.ts"],
       "@lehrlingsquiz/components": ["./src/components/index.ts"],
       "@lehrlingsquiz/assets": ["./src/assets/*"],
-      "@lehrlingsquiz/util": ["./src/util/index.ts"]
+      "@lehrlingsquiz/util": ["./src/util/index.ts"],
+      "@lehrlingsquiz/theme": ["./src/theme/index.ts"]
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "build"]
 }
