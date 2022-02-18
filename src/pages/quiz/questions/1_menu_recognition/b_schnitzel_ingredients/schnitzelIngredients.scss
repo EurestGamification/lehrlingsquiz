@@ -1,7 +1,14 @@
+@use "theme:mixins" as mixins;
+@use "theme:variables" as variables;
+
 .schnitzel-ingredients {
   &__content {
     &__pan {
+      display: block;
+      margin: auto;
       width: 100%;
+      padding: 0 variables.$horizontal-spacer-s;
+      max-width: 70%;
     }
   }
 }

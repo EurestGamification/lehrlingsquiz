@@ -31,8 +31,8 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
 
   const DnDsSolution: DnDs = {
     Start: [],
-    Weißbrot: ["Semmel", "Toastbrot"],
-    Gebäck: ["Laugenstangerl"],
+    Weißbrot: ["Toastbrot", "Baguette"],
+    Gebäck: ["Laugenstangerl", "Semmel"],
     Schwarzbrot: ["Roggenbrot", "Vollkornbrot"]
   };
 
