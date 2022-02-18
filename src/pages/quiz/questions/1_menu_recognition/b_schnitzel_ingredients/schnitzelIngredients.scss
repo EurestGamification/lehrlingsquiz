@@ -8,7 +8,10 @@
       margin: auto;
       width: 100%;
       padding: 0 variables.$horizontal-spacer-s;
-      max-width: 70%;
+
+      @include mixins.for-desktop {
+        max-width: 70%;
+      }
     }
   }
 }
