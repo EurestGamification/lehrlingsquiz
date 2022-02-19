@@ -11,11 +11,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 120%;
     opacity: 0.1;
     z-index: -1;
     background-image: url("../../assets/img/chef.jpeg");
     background-size: cover;
+    background-position: center;
 
     @include mixins.for-desktop {
       background-image: none;
@@ -34,6 +35,20 @@
   }
 
   &__actions {
-    margin-top: variables.$spacing-5xl;
+    // margin-top: variables.$spacing-5xl;
+
+    &__cancel {
+      background-color: variables.$red;
+    }
+
+    &__cancel-confirm {
+      span {
+        font-size: large;
+      }
+
+      &__y {
+        background-color: variables.$red;
+      }
+    }
   }
 }

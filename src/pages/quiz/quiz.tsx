@@ -7,7 +7,7 @@ import {
   styled
 } from "@mui/material";
 import { inject, observer } from "mobx-react";
-import React from "react";
+import React, { useState } from "react";
 import { quizStore } from "src/stores/quize.store";
 import Introduction from "./introduction/introduction";
 import {
@@ -75,6 +75,9 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
         quizStore.currentQuizStep as keyof typeof questionPages
       ];
 
+    const [activatedCancel, setActivatedCancel] =
+      useState<boolean>(false);
+
     return (
       <div className="quiz">
         <Header />
@@ -103,15 +106,32 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
               <ActiveQuizPage />
             </div>
 
-            {/* <div className="quiz__actions">
-              <button
-                onClick={() =>
-                  quizStore.setScore(quizStore.score + 1)
-                }
-              >
-                increase score
-              </button>
-            </div> */}
+            <div className="quiz__actions">
+              {activatedCancel ? (
+                <div className="quiz__actions__cancel-confirm">
+                  <span>Wirklich abbrechen?</span>
+                  <button
+                    className="quiz__actions__cancel-confirm__y"
+                    onClick={() => quizStore.resetQuiz()}
+                  >
+                    Ja
+                  </button>
+                  <button
+                    className="quiz__actions__cancel-confirm__n"
+                    onClick={() => setActivatedCancel(false)}
+                  >
+                    Nein
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setActivatedCancel(true)}
+                  className="quiz__actions__cancel"
+                >
+                  Quiz abbrechen
+                </button>
+              )}
+            </div>
           </>
         )}
       </div>
