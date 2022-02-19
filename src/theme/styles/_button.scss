@@ -11,6 +11,7 @@ button {
   cursor: pointer;
   font-family: variables.$franklin;
   font-size: large;
+  margin-left: variables.$spacing-xs;
 
   &:disabled {
     background-color: variables.$green-25;
