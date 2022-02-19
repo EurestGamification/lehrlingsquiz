@@ -69,6 +69,7 @@
           padding: variables.$spacing-xs variables.$spacing-m;
           position: absolute;
           transform: translateY(-145%);
+
           @include mixins.for-desktop {
             padding: variables.$spacing-s variables.$spacing-l;
             border: 3px solid black;

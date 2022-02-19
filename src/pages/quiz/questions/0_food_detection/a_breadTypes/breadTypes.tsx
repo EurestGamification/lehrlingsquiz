@@ -42,7 +42,8 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
       "Toastbrot",
       "Semmel",
       "Vollkornbrot",
-      "Roggenbrot"
+      "Roggenbrot",
+      "Baguette"
     ],
     Weißbrot: [],
     Gebäck: [],
