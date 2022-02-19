@@ -3,6 +3,7 @@ import { ICustomerOrientationProps } from "../customerOrientation";
 import "./customerInteraction.scss";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
+import customerOrdering from "@lehrlingsquiz/assets/img/customer_ordering.jpg";
 
 interface CustomerInteractionProps
   extends ICustomerOrientationProps {}
@@ -38,6 +39,7 @@ const CustomerInteraction: React.FC<CustomerInteractionProps> =
                 Reis haben?"
               </p>
             </div>
+            <img src={customerOrdering} alt="Customer ordering" />
             <div className="customer-interaction__content__answer">
               {answerChoices.map((a: string, i: number) => (
                 <p key={`${a}-${i}`}>
