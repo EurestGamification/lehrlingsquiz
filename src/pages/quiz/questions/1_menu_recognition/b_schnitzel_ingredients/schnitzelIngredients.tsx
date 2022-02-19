@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./schnitzelIngredients.scss";
-import pan from "@lehrlingsquiz/assets/img/pan.png";
 import { countMatches } from "@lehrlingsquiz/util";
 import {
   DndContext,
@@ -12,7 +11,7 @@ import {
   useDraggable,
   useDroppable,
   useSensor,
-  useSensors,
+  useSensors
 } from "@dnd-kit/core";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IMenuRecognitionProps } from "../menuRecognition";
@@ -26,7 +25,7 @@ const correctIngredients: string[] = [
   "Zitrone",
   "Kalbsfleisch",
   "Petersilie",
-  "Butterschmalz",
+  "Butterschmalz"
 ];
 
 const fakeIngredients: string[] = [
@@ -36,32 +35,42 @@ const fakeIngredients: string[] = [
   "Champignons",
   "Nudeln",
   "Schweinefleisch",
-  "Schnittlauch",
+  "Schnittlauch"
 ];
 
 const availaleIngredients: string[] = [
   ...correctIngredients,
-  ...fakeIngredients,
+  ...fakeIngredients
 ];
 
 const droppablePanId = "pan" as const;
 
-const Pan: React.FC = () => {
+interface PanProps {
+  ingredients: string[];
+}
+
+const Pan: React.FC<PanProps> = ({ ingredients }: PanProps) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "pan",
+    id: "pan"
   });
   const style = {
-    backgroundColor: isOver ? "#dfdfdf" : undefined,
+    opacity: isOver ? 0.5 : undefined
   };
 
   return (
-    <img
+    <div
       ref={setNodeRef}
       style={style}
-      src={pan}
-      alt="Schnitzel Pfanne"
       className="schnitzel-ingredients__content__pan"
-    />
+    >
+      {ingredients.map((e: string, i: number) => (
+        <>
+          <span key={`chosenIngredients-${e}`} className="draggable">
+            {e}
+          </span>
+        </>
+      ))}
+    </div>
   );
 };
 
@@ -70,15 +79,15 @@ interface DraggableIngredientProps {
 }
 
 const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
-  title,
+  title
 }: DraggableIngredientProps) => {
   const { attributes, listeners, setNodeRef, transform } =
     useDraggable({
-      id: title,
+      id: title
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
       }
     : undefined;
 
@@ -88,6 +97,7 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
       style={style}
       {...listeners}
       {...attributes}
+      className="draggable"
     >
       {title}
     </button>
@@ -97,7 +107,7 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
 interface SchnitzelIngredientsProps extends IMenuRecognitionProps {}
 
 const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
-  onStepFinished,
+  onStepFinished
 }: SchnitzelIngredientsProps) => {
   const [ingredients, setIngredients] = useState<string[]>(
     _.shuffle<string>(availaleIngredients)
@@ -157,15 +167,7 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
               </span>
             ))}
           </p>
-          <Pan />
-          <div className="schnitzel-ingredients__content__chosen-ingredients">
-            {chosenIngredients.map((e: string, i: number) => (
-              <>
-                <span key={`chosenIngredients-${e}`}>{e}</span>
-                {i !== chosenIngredients.length - 1 && ", "}
-              </>
-            ))}
-          </div>
+          <Pan ingredients={chosenIngredients} />
 
           <button onClick={() => resetIngredients()}>
             Zutaten Zurücksetzen

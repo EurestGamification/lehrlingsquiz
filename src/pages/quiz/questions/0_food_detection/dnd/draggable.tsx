@@ -15,7 +15,7 @@ export function Draggable(props: any) {
   return (
     <button
       ref={setNodeRef}
-      className={props.className ?? ""}
+      className={`${props.className ?? ""} draggable`}
       style={style}
       {...listeners}
       {...attributes}

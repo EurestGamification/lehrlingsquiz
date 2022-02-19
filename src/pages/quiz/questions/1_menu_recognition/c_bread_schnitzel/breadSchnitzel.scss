@@ -1,4 +1,5 @@
 @use "theme:variables" as variables;
+@use "theme:mixins" as mixins;
 
 .bread-schnitzel {
   &__content {
@@ -7,14 +8,36 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+      margin-top: variables.$spacing-l;
 
       &__bowl {
-        width: 30%;
-        padding: variables.$spacing-s variables.$spacing-m;
+        flex: 1;
+        height: variables.$horizontal-spacer-m;
+        padding: variables.$spacing-s;
+        background-image: url("../../../../../assets/img/bowl.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: variables.$spacing-xs;
+
+        @include mixins.for-desktop {
+          margin: variables.$spacing-l;
+        }
 
         &.bowl-disabled {
           opacity: 0.3;
         }
+      }
+    }
+
+    &__choice {
+      list-style-type: none;
+
+      li {
+        font-size: large;
       }
     }
   }

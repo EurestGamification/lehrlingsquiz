@@ -14,6 +14,7 @@ import {
 } from "@dnd-kit/core";
 import { Droppable } from "../dnd/droppable";
 import { Draggable } from "../dnd/draggable";
+import { Label } from "@lehrlingsquiz/components";
 
 interface BreadTypesProps extends IFoodDetectionProps {}
 
@@ -71,9 +72,10 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
               }
             >
               {breadType !== "Start" && (
-                <span className="breadTypes__content__droppable__basket__title">
-                  {breadType}
-                </span>
+                <Label
+                  text={breadType}
+                  className="breadTypes__content__droppable__basket__title"
+                />
               )}
               {/* // TODO make drag overlay with modifier for 'restrictWindowEdge' */}
               {currentDnDs[breadType].map((bread, bi) => (

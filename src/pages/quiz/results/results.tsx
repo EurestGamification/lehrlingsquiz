@@ -1,20 +1,23 @@
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
 import React from "react";
-import apprentice from "@lehrlingsquiz/assets/img/results_apprentice.jpg";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
 import "./results.scss";
 
 const Results: React.FC = inject(quizStore.storeKey)(
   observer(() => {
+    const { width, height } = useWindowSize();
     return (
       <div className="results">
+        <Confetti
+          width={width}
+          height={height}
+          recycle={true}
+          numberOfPieces={100}
+        />
         <h2>Resultat</h2>
         <div className="results__content">
-          <img
-            className="results__content__apprentice"
-            src={apprentice}
-            alt="Eurest Lehrling"
-          />
           <h4 className="results__content__score">
             {quizStore.score}/16 Punkte
           </h4>

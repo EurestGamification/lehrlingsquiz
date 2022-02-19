@@ -11,41 +11,43 @@ import {
   useSensors
 } from "@dnd-kit/core";
 import React, { useReducer } from "react";
-import bowl from "@lehrlingsquiz/assets/img/bowl.png";
 import "./breadSchnitzel.scss";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import { quizStore } from "@lehrlingsquiz/stores";
 import _ from "lodash";
+import { Label } from "@lehrlingsquiz/components";
 
 const bowlNamePrefix = "bowl" as const;
 
 interface BowlProps {
-  name: string;
+  text: string;
+  id: string;
   enabled?: boolean;
 }
 
 const Bowl: React.FC<BowlProps> = ({
-  name,
+  text,
+  id,
   enabled = true
 }: BowlProps) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: name,
+    id: id,
     disabled: !enabled
   });
   const style = {
-    backgroundColor: isOver ? "#dfdfdf" : undefined
+    opacity: isOver ? 0.5 : undefined
   };
 
   return (
-    <img
+    <div
       ref={setNodeRef}
       style={style}
-      src={bowl}
-      alt="Schnitzel Panierzutaten Schüssel"
       className={`bread-schnitzel__content__bowl-wrapper__bowl ${
         !enabled ? "bowl-disabled" : ""
       }`}
-    />
+    >
+      <Label text={text} />
+    </div>
   );
 };
 
@@ -72,6 +74,7 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
       style={style}
       {...listeners}
       {...attributes}
+      className="draggable"
     >
       {name}
     </button>
@@ -174,13 +177,14 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
               (s: string, i: number) => (
                 <Bowl
                   key={`${bowlNamePrefix}-${i}`}
-                  name={`${bowlNamePrefix}-${i}`}
+                  id={`${bowlNamePrefix}-${i}`}
+                  text={`${i + 1}. Zutat  `}
                   enabled={!s}
                 />
               )
             )}
           </div>
-          <ul>
+          <ul className="bread-schnitzel__content__choice">
             {ingredients.sortedIngredients.map(
               (s: string, i: number) =>
                 s && (
