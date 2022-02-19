@@ -112,20 +112,25 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
                   <span>Wirklich abbrechen?</span>
                   <button
                     className="quiz__actions__cancel-confirm__y"
-                    onClick={() => quizStore.resetQuiz()}
+                    onClick={() => {
+                      setActivatedCancel((prev) => !prev);
+                      quizStore.resetQuiz();
+                    }}
                   >
                     Ja
                   </button>
                   <button
                     className="quiz__actions__cancel-confirm__n"
-                    onClick={() => setActivatedCancel(false)}
+                    onClick={() =>
+                      setActivatedCancel((prev) => !prev)
+                    }
                   >
                     Nein
                   </button>
                 </div>
               ) : (
                 <button
-                  onClick={() => setActivatedCancel(true)}
+                  onClick={() => setActivatedCancel((prev) => !prev)}
                   className="quiz__actions__cancel"
                 >
                   Quiz abbrechen
