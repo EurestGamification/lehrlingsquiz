@@ -10,8 +10,8 @@ const questions = [
     answerOptions: [
       { answerText: "Ca. 700 Mitarbeiter:innen", isCorrect: false },
       { answerText: "Ca. 1.100 Mitarbeiter:innen", isCorrect: true },
-      { answerText: "Ca. 1.600 Mitarbeiter:innen", isCorrect: false },
-    ],
+      { answerText: "Ca. 1.600 Mitarbeiter:innen", isCorrect: false }
+    ]
   },
   {
     questionText:
@@ -19,17 +19,17 @@ const questions = [
     answerOptions: [
       {
         answerText: "Durchschnittlich 8 Lehrlinge",
-        isCorrect: false,
+        isCorrect: false
       },
       {
         answerText: "Durchschnittlich 30 Lehrlinge",
-        isCorrect: true,
+        isCorrect: true
       },
       {
         answerText: "Durchschnittlich 65 Lehrlinge",
-        isCorrect: false,
-      },
-    ],
+        isCorrect: false
+      }
+    ]
   },
   {
     questionText:
@@ -37,9 +37,9 @@ const questions = [
     answerOptions: [
       { answerText: "Ca. 10 Restaurants", isCorrect: false },
       { answerText: "Ca. 60 Restaurants", isCorrect: true },
-      { answerText: "Ca. 100 Restaurants", isCorrect: false },
-    ],
-  },
+      { answerText: "Ca. 100 Restaurants", isCorrect: false }
+    ]
+  }
 ];
 
 export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
@@ -65,11 +65,12 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
           </p>
           <div className="company-estimate__content__answer-section">
             {questions[currentQuestion].answerOptions.map(
-              (answerOption) => (
+              (answerOption, i) => (
                 <button
                   onClick={() => checkAnswer(answerOption.isCorrect)}
                   className="company-estimate__content__answer-item"
                   disabled={isActive}
+                  key={`${i}-${answerOption}`}
                 >
                   {answerOption.answerText}
                 </button>
