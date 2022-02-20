@@ -70,7 +70,7 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
                   onClick={() => checkAnswer(answerOption.isCorrect)}
                   className="company-estimate__content__answer-item"
                   disabled={isActive}
-                  key={`${i}-${answerOption}`}
+                  key={`${i}`}
                 >
                   {answerOption.answerText}
                 </button>
