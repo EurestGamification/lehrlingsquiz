@@ -13,8 +13,8 @@ const Results: React.FC = inject(quizStore.storeKey)(
         <Confetti
           width={width}
           height={height}
-          recycle={true}
-          numberOfPieces={100}
+          recycle={false}
+          numberOfPieces={300}
         />
         <h2>Resultat</h2>
         <div className="results__content">
