@@ -14,6 +14,8 @@ jobs:
       - name: clean install packages
         run: npm ci
       - name: lint
-        run: npm run lint
+        run: npm run lint:fix
+      - name: e2e
+        run: npm run e2e
       - name: build
         run: npm run build
