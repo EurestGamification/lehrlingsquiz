@@ -8,6 +8,7 @@ import "./results.scss";
 const Results: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     const { width, height } = useWindowSize();
+
     return (
       <div className="results">
         <Confetti
