@@ -13,9 +13,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: clean install packages
         run: npm ci
-      - name: lint
+      - name: lint(:fix) project files
         run: npm run lint:fix
-      - name: e2e
+      - name: run end-2-end tests
         run: npm run e2e
-      - name: build
+      - name: create production build
         run: npm run build
