@@ -18,6 +18,9 @@ jobs:
       - name: run end-2-end tests
         uses: cypress-io/github-action@v2
         with:
+          browser: chrome
           start: npm start
+          build: npm run build
+          wait-on: "http://localhost:3000"
       - name: create production build
         run: npm run build
