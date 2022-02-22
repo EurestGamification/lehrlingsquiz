@@ -2,7 +2,7 @@
 
 describe("Test Lehrlingsquiz", () => {
   beforeEach(() => {
-    cy.visit(`http://localhost:3000`);
+    cy.visit("");
   });
 
   it("successfully loads", () => {
@@ -11,5 +11,10 @@ describe("Test Lehrlingsquiz", () => {
 
   it("renders the intro page correctly", () => {
     cy.get("h1.header__title").should("have.text", "Lehrlingsquiz");
+  });
+
+  it("starts the quiz", () => {
+    cy.get("button").contains("Quiz starten").click();
+    cy.contains("Erkennen von Lebensmitteln");
   });
 });
