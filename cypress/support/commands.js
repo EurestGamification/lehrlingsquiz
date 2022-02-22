@@ -32,3 +32,13 @@ Cypress.Commands.add("goto", (section) => {
     cy.get("button").contains("Weiter").click();
   }
 });
+
+Cypress.Commands.add("weiter", () => {
+  cy.get("button").contains("Weiter").click();
+});
+
+Cypress.Commands.add("dragTo", (subject, to, dataTransfer) => {
+  subject.trigger("dragstart"), { dataTransfer };
+
+  to.trigger("drop", { dataTransfer });
+});
