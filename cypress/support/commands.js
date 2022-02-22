@@ -24,6 +24,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("jumpto", (section) => {
-  
+Cypress.Commands.add("goto", (section) => {
+  cy.visit("/");
+  cy.get("button").contains("Quiz starten").click();
+
+  for (let i = 0; i < section; i++) {
+    cy.get("button").contains("Weiter").click();
+  }
 });

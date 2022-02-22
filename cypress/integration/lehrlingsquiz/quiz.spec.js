@@ -2,7 +2,7 @@
 
 describe("Test Lehrlingsquiz", () => {
   beforeEach(() => {
-    cy.visit("");
+    cy.visit("/");
   });
 
   it("successfully loads", () => {
@@ -13,8 +13,21 @@ describe("Test Lehrlingsquiz", () => {
     cy.get("h1.header__title").should("have.text", "Lehrlingsquiz");
   });
 
-  it("starts the quiz", () => {
-    cy.get("button").contains("Quiz starten").click();
+  it("breadTypes renders correctly", () => {
+    // cy.get("button").contains("Quiz starten").click();
+    cy.goto(0);
     cy.contains("Erkennen von Lebensmitteln");
+  });
+
+  it("vegetableTypes renders correctly", () => {
+    // cy.get("button").contains("Quiz starten").click();
+    cy.goto(1);
+    cy.contains("Erkennen von Lebensmitteln");
+  });
+
+  it("resets quiz on cancel confirm", () => {
+    cy.get("button.quiz__actions__cancel").click();
+    cy.get("button.quiz__actions__cancel").click();
+    cy.contains("Quiz starten");
   });
 });
