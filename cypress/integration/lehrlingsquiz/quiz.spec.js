@@ -26,8 +26,9 @@ describe("Test Lehrlingsquiz", () => {
   });
 
   it("resets quiz on cancel confirm", () => {
+    cy.goto(1);
     cy.get("button.quiz__actions__cancel").click();
-    cy.get("button.quiz__actions__cancel").click();
+    cy.get("button.quiz__actions__cancel-confirm__y").click();
     cy.contains("Quiz starten");
   });
 });
