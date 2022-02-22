@@ -6,7 +6,7 @@ on:
     pull-request: [main, production]
 
 jobs:
-  build:
+  production:
     runs-on: ubuntu-latest
 
     steps:
