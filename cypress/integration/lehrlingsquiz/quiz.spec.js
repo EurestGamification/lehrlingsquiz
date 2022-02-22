@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import "@4tw/cypress-drag-drop";
 
-describe("Test Lehrlingsquiz", () => {
+describe("Lehrlingsquiz", () => {
   beforeEach(() => {
     cy.visit("/");
   });
@@ -15,13 +15,11 @@ describe("Test Lehrlingsquiz", () => {
   });
 
   it("breadTypes renders correctly", () => {
-    // cy.get("button").contains("Quiz starten").click();
     cy.goto(0);
     cy.contains("Erkennen von Lebensmitteln");
   });
 
   it("vegetableTypes renders correctly", () => {
-    // cy.get("button").contains("Quiz starten").click();
     cy.goto(1);
     cy.contains("Erkennen von Lebensmitteln");
   });
