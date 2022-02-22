@@ -16,7 +16,7 @@ jobs:
       - name: lint(:fix) project files
         run: npm run lint:fix
       - name: run end-2-end tests
-        run: npm run e2e
+        uses: cypress-io/github-action@v2
         with:
           start: npm start
       - name: create production build
