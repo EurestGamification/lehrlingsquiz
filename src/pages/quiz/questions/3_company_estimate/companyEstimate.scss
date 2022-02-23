@@ -1,7 +1,16 @@
+@use "theme:variables" as variables;
+
 .company-estimate {
   &__content {
     .inaktiv{
       display: none;
+    }
+
+    .false{
+      border: 2px solid variables.$red;
+    }
+    .true{
+      border: 2px solid variables.$green-75;
     }
   }
 }

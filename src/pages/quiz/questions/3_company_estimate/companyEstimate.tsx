@@ -68,7 +68,8 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
               (answerOption, i) => (
                 <button
                   onClick={() => checkAnswer(answerOption.isCorrect)}
-                  className="company-estimate__content__answer-item"
+                  //className="company-estimate__content__answer-section__answer-item"
+                  className={isActive ? answerOption.isCorrect.toString() : ""}
                   disabled={isActive}
                   key={`${i}`}
                 >
@@ -78,7 +79,7 @@ export const CompanyEstimate: React.FC = inject(quizStore.storeKey)(
             )}
           </div>
           <button
-            className={`${!isActive ? "inaktiv" : ""} next`}
+            className={!isActive ? "inaktiv" : ""}
             onClick={() => {
               const nextQuestion = currentQuestion + 1;
               if (nextQuestion < questions.length) {
