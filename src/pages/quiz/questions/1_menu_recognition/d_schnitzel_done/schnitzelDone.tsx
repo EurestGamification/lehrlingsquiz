@@ -25,6 +25,7 @@ const SchnitzelDone: React.FC<SchnitzelDoneProps> = inject(
                 quizStore.currentQuizStep + 1
               )
             }
+            className="next"
           >
             Weiter
           </button>

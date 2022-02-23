@@ -167,16 +167,18 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
               </span>
             ))}
           </p>
-          <Pan ingredients={chosenIngredients} />
 
           <button onClick={() => resetIngredients()}>
             Zutaten Zurücksetzen
           </button>
+          <Pan ingredients={chosenIngredients} />
+
           <button
             onClick={() => {
               checkAnswers();
               onStepFinished();
             }}
+            className="next"
           >
             Weiter
           </button>

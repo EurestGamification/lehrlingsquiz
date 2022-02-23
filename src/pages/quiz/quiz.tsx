@@ -109,7 +109,6 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
             <div className="quiz__actions">
               {activatedCancel ? (
                 <div className="quiz__actions__cancel-confirm">
-                  <span>Wirklich abbrechen?</span>
                   <button
                     className="quiz__actions__cancel-confirm__y"
                     onClick={() => {
@@ -127,6 +126,7 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
                   >
                     Nein
                   </button>
+                  <span>Wirklich abbrechen?</span>
                 </div>
               ) : (
                 <button

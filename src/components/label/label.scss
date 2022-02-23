@@ -11,6 +11,5 @@
 
   @include mixins.for-desktop {
     padding: variables.$spacing-s variables.$spacing-l;
-    border: 3px solid variables.$black;
   }
 }

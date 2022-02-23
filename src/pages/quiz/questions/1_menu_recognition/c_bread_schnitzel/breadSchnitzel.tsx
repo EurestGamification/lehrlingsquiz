@@ -172,6 +172,9 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
               )
             )}
           </div>
+          <button onClick={() => resetIngredients()}>
+            Zutaten Zurücksetzen
+          </button>
           <div className="bread-schnitzel__content__bowl-wrapper">
             {ingredients.sortedIngredients.map(
               (s: string, i: number) => (
@@ -195,14 +198,12 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
             )}
           </ul>
 
-          <button onClick={() => resetIngredients()}>
-            Zutaten Zurücksetzen
-          </button>
           <button
             onClick={() => {
               checkAnswers();
               onStepFinished();
             }}
+            className="next"
           >
             Weiter
           </button>

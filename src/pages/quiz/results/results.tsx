@@ -22,7 +22,10 @@ const Results: React.FC = inject(quizStore.storeKey)(
           <h4 className="results__content__score">
             {quizStore.score}/16 Punkte
           </h4>
-          <button onClick={() => quizStore.resetQuiz()}>
+          <button
+            onClick={() => quizStore.resetQuiz()}
+            className="results__content__restart"
+          >
             Nochmal spielen
           </button>
           {quizStore.score >= 12 ? (
@@ -37,9 +40,10 @@ const Results: React.FC = inject(quizStore.storeKey)(
               Lehrberuf ist auf alle Fälle da, nur bei ein paar
               kleinen Punkten gibt es noch etwas Nachholbedarf. Das
               macht aber gar nichts – genau diese Fertigkeiten
-              bekommst du dann bei uns vermittelt! Bewerbe dich doch
-              gleich hier: *Link* oder lies dir noch ein paar weitere
-              Informationen hier *Link* durch!
+              bekommst du dann bei uns vermittelt!
+              <br />
+              Bewerbe dich doch gleich hier: *Link* oder lies dir noch
+              ein paar weitere Informationen hier *Link* durch!
             </p>
           )}
         </div>

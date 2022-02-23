@@ -21,6 +21,7 @@ const CustomerInstruction: React.FC<CustomerInstructionProps> = ({
           onClick={() => {
             onStepFinished();
           }}
+          className="next"
         >
           Weiter
         </button>

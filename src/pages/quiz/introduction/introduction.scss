@@ -7,4 +7,9 @@
     background-color: variables.$schiefer-100;
     fill: variables.$green-100;
   }
+
+  &__action-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 }

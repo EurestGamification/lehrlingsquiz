@@ -84,6 +84,7 @@ const MenuCourses: React.FC<MenuCoursesProps> = ({
             checkAnswers();
             onStepFinished();
           }}
+          className="next"
         >
           Weiter
         </button>

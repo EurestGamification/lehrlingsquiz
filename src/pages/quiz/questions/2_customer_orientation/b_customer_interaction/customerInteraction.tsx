@@ -63,6 +63,7 @@ const CustomerInteraction: React.FC<CustomerInteractionProps> =
                   quizStore.currentQuizStep + 1
                 );
               }}
+          className="next"
             >
               Weiter
             </button>

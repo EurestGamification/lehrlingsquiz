@@ -91,7 +91,9 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
           ))}
         </DndContext>
       </div>
-      <button onClick={() => checkAnswers()}>Weiter</button>
+      <button className="next" onClick={() => checkAnswers()}>
+        Weiter
+      </button>
     </div>
   );
 

@@ -23,6 +23,7 @@ const VegetableTypes: React.FC<VegetableTypesProps> = inject(
               quizStore.currentQuizStep + 1
             )
           }
+          className="next"
         >
           Weiter
         </button>

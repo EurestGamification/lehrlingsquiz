@@ -16,10 +16,14 @@
   @include mixins.for-desktop {
     margin: variables.$spacing-s;
     padding: variables.$spacing-s variables.$spacing-m;
-    border: 3px solid variables.$green-100;
   }
 
   &:active {
     cursor: grabbing;
   }
+}
+
+.next {
+  transform: translateY(24px);
+  float: right;
 }
