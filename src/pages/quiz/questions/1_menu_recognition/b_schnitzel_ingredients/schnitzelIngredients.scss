@@ -10,6 +10,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       // height: (variables.$spacing-5xl) * 4;
+      max-height: variables.$vertical-spacer-xl;
       display: flex;
       justify-content: flex-end;
       align-items: flex-start;
