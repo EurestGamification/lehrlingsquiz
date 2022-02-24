@@ -1,11 +1,16 @@
 @use "theme:variables";
+@use "theme:mixins";
 
 .results {
   &__content {
     img {
-      width: 80%;
-      display: block;
-      margin: auto;
+      width: 100%;
+
+      @include mixins.for-desktop {
+        display: block;
+        width: auto;
+        max-height: variables.$vertical-spacer-xl;
+      }
     }
 
     &__restart {

@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import React from "react";
 import "./introduction.scss";
 import claim from "@lehrlingsquiz/assets/img/claim.png";
+import apprentice from "@lehrlingsquiz/assets/img/intro_apprentice.jpeg";
 
 const Introduction: React.FC = inject(quizStore.storeKey)(
   observer(() => {
@@ -13,7 +14,14 @@ const Introduction: React.FC = inject(quizStore.storeKey)(
           src={claim}
           alt="Eurest Claim"
         />
-        <p>some intro text...</p>
+        <img
+          className="introduction__apprentice"
+          src={apprentice}
+          alt="Eurest apprentice"
+        />
+        <p className="introduction__instruction">
+          some intro text...
+        </p>
         <div className="introduction__action-wrapper">
           <button onClick={() => quizStore.startQuiz()}>
             Quiz starten

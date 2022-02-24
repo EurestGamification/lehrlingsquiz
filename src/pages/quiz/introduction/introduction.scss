@@ -1,4 +1,5 @@
 @use "theme:variables" as variables;
+@use "theme:mixins";
 
 .introduction {
   &__claim {
@@ -6,6 +7,21 @@
     width: 100%;
     background-color: variables.$schiefer-100;
     fill: variables.$green-100;
+  }
+
+  &__apprentice {
+    width: 100%;
+
+    @include mixins.for-desktop {
+      display: block;
+      margin: auto;
+      width: auto;
+      max-height: variables.$vertical-spacer-xl * 1.5;
+    }
+  }
+
+  &__instruction {
+    text-align: center;
   }
 
   &__action-wrapper {

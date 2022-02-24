@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import React from "react";
 import useWindowSize from "react-use/lib/useWindowSize";
 import Confetti from "react-confetti";
+import apprentice from "@lehrlingsquiz/assets/img/results_apprentice.jpeg";
 import "./results.scss";
 
 const Results: React.FC = inject(quizStore.storeKey)(
@@ -19,6 +20,7 @@ const Results: React.FC = inject(quizStore.storeKey)(
         />
         <h2>Resultat</h2>
         <div className="results__content">
+          <img src={apprentice} alt="Eurest apprentice" />
           <h4 className="results__content__score">
             {quizStore.score}/16 Punkte
           </h4>
