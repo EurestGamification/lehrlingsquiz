@@ -51,7 +51,6 @@
         padding-top: variables.$spacing-l;
 
         @include mixins.for-desktop {
-          min-height: 270px;
           width: 200px;
         }
       }
