@@ -2,7 +2,11 @@
 
 .menu-courses {
   &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     &__item {
+      width: 50%;
       &__connector {
         display: block !important;
         margin: variables.$spacing-s auto;
