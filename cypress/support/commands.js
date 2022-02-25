@@ -24,9 +24,17 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+Cypress.Commands.add(
+  "forceClick",
+  { prevSubject: "element" },
+  (subject, options) => {
+    cy.wrap(subject).click({ force: true });
+  }
+);
+
 Cypress.Commands.add("goto", (section) => {
   cy.visit("/");
-  cy.get("button").contains("Quiz starten").click();
+  cy.get("button").contains("Quiz starten").forceClick();
 
   for (let i = 0; i < section; i++) {
     cy.get("button").contains("Weiter").click();
