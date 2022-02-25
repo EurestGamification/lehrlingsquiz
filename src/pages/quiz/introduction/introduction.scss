@@ -2,21 +2,24 @@
 @use "theme:mixins";
 
 .introduction {
-  &__claim {
-    padding-left: variables.$spacing-xl;
-    width: 100%;
-    background-color: variables.$schiefer-100;
-    fill: variables.$green-100;
-  }
+  &__images {
+    &__claim {
+      padding-left: variables.$spacing-xl;
+      width: 100%;
+      background-color: variables.$schiefer-100;
+      fill: variables.$green-100;
+    }
 
-  &__apprentice {
-    width: 100%;
+    &__apprentice {
+      width: 100%;
+    }
 
     @include mixins.for-desktop {
-      display: block;
       margin: auto;
-      width: auto;
-      max-height: variables.$vertical-spacer-xl * 1.5;
+      height: variables.$vertical-spacer-xl * 1.5;
+      overflow: hidden;
+      object-fit: cover;
+      object-position: top;
     }
   }
 
