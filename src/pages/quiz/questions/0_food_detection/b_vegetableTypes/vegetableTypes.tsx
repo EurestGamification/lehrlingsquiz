@@ -16,6 +16,14 @@ import { Droppable } from "../dnd/droppable";
 import { Draggable } from "../dnd/draggable";
 import lodash from "lodash";
 
+// vegetables
+import frühlingszwiebel from "@lehrlingsquiz/assets/img/ingredients/vegetable/frühlingszwiebel.png";
+import karotte from "@lehrlingsquiz/assets/img/ingredients/vegetable/karotte.png";
+import kohlrabi from "@lehrlingsquiz/assets/img/ingredients/vegetable/kohlrabi.png";
+import lauch from "@lehrlingsquiz/assets/img/ingredients/vegetable/lauch.png";
+import radieschen from "@lehrlingsquiz/assets/img/ingredients/vegetable/radieschen.png";
+import zucchini from "@lehrlingsquiz/assets/img/ingredients/vegetable/zucchini.png";
+
 // ! DnD out of position when scrolling
 // TODO make droppables to sortables
 // TODO make drag overlay with modifier for 'restrictWindowEdge'
@@ -46,12 +54,12 @@ const VegetableTypes: React.FC<VegetableTypesProps> = () => {
   }
 
   const vegetableSources: string[] = [
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg"
+    frühlingszwiebel,
+    karotte,
+    kohlrabi,
+    lauch,
+    radieschen,
+    zucchini
   ];
 
   const [currentStart, setCurrentStart] = useState<
@@ -95,7 +103,9 @@ const VegetableTypes: React.FC<VegetableTypesProps> = () => {
               <img
                 src={vegetableSources[vTi]}
                 className="vegetableTypes__content__droppable__vegetable__img"
-                alt="Vegetable - Droppable"
+                alt={`Vegetable ${
+                  Vegetable[vegetable as keyof typeof Vegetable]
+                }`}
               />
               {vegetable !== null && (
                 <Draggable

@@ -7,23 +7,34 @@ import {
   styled
 } from "@mui/material";
 import { inject, observer } from "mobx-react";
-import React, { useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { quizStore } from "src/stores/quize.store";
 import Introduction from "./introduction/introduction";
-import {
-  CompanyEstimate,
-  CustomerOrientation,
-  FoodDetection,
-  MenuRecognition
-} from "./questions";
+
 import "./quiz.scss";
 import Results from "./results/results";
 
 export const questionPages = {
-  0: FoodDetection,
-  1: MenuRecognition,
-  2: CustomerOrientation,
-  3: CompanyEstimate
+  0: lazy(() =>
+    import("./questions").then((module) => ({
+      default: module.FoodDetection
+    }))
+  ),
+  1: lazy(() =>
+    import("./questions").then((module) => ({
+      default: module.MenuRecognition
+    }))
+  ),
+  2: lazy(() =>
+    import("./questions").then((module) => ({
+      default: module.CustomerOrientation
+    }))
+  ),
+  3: lazy(() =>
+    import("./questions").then((module) => ({
+      default: module.CompanyEstimate
+    }))
+  )
 } as const;
 
 const ColorlibStepIconRoot = styled("div")<{
@@ -103,7 +114,9 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
               </Stepper>
             </div>
             <div className="quiz__content">
-              <ActiveQuizPage />
+              <Suspense fallback={() => <div>Laden...</div>}>
+                <ActiveQuizPage />
+              </Suspense>
             </div>
 
             <div className="quiz__actions">

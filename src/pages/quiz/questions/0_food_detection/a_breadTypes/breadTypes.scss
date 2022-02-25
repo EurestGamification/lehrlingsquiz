@@ -20,13 +20,37 @@
       background-color: transparent;
 
       img {
-        height: variables.$spacing-4xl;
+        width: variables.$spacing-3xl;
+        height: auto;
+
+        @include mixins.for-desktop {
+          height: variables.$spacing-4xl;
+          width: auto;
+        }
+
+        &.baguette {
+          width: variables.$spacing-5xl * 1.5;
+
+          @include mixins.for-desktop {
+            width: auto;
+          }
+        }
+
+        &.roggenbrot {
+          width: variables.$spacing-l;
+
+          @include mixins.for-desktop {
+            width: auto;
+          }
+        }
 
         &.vollkornbrot,
         &.roggenbrot,
         &.toastbrot,
         &.semmel {
-          height: variables.$spacing-5xl * 1.5;
+          @include mixins.for-desktop {
+            height: variables.$spacing-5xl * 1.5;
+          }
         }
       }
     }
