@@ -1,7 +1,7 @@
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
 import React from "react";
-import wienerSchnitzel from "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg";
+import wienerSchnitzel from "@lehrlingsquiz/assets/img/wiener_schnitzel.jpeg";
 import "./schnitzelDone.scss";
 import { IMenuRecognitionProps } from "../menuRecognition";
 

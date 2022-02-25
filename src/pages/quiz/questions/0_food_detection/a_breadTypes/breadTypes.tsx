@@ -17,6 +17,14 @@ import { Draggable } from "../dnd/draggable";
 import lodash from "lodash";
 import { Label } from "@lehrlingsquiz/components";
 
+// breads
+import baguette from "@lehrlingsquiz/assets/img/ingredients/bread/baguette.png";
+import laugenstangerl from "@lehrlingsquiz/assets/img/ingredients/bread/laugenstangerl.png";
+import roggenbrot from "@lehrlingsquiz/assets/img/ingredients/bread/roggenbrot.png";
+import semmel from "@lehrlingsquiz/assets/img/ingredients/bread/semmel.png";
+import toastbrot from "@lehrlingsquiz/assets/img/ingredients/bread/toastbrot.png";
+import vollkornbrot from "@lehrlingsquiz/assets/img/ingredients/bread/vollkornbrot.png";
+
 // ! DnD out of position when scrolling
 // TODO make droppables to sortables
 // TODO make drag overlay with modifier for 'restrictWindowEdge'
@@ -44,17 +52,16 @@ enum Bread {
   Vollkornbrot
 }
 
-// eslint-disable-next-line no-unused-vars
-const breadSources: { [key in Bread]: string } = {
-  [Bread.Toastbrot]: "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Bread.Baguette]: "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Bread.Laugenstangerl]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Bread.Semmel]: "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Bread.Roggenbrot]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Bread.Vollkornbrot]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg"
+const breadSources: {
+  // eslint-disable-next-line no-unused-vars
+  [key in Bread]: string;
+} = {
+  [Bread.Toastbrot]: toastbrot,
+  [Bread.Baguette]: baguette,
+  [Bread.Laugenstangerl]: laugenstangerl,
+  [Bread.Semmel]: semmel,
+  [Bread.Roggenbrot]: roggenbrot,
+  [Bread.Vollkornbrot]: vollkornbrot
 };
 
 const BreadTypes: React.FC<BreadTypesProps> = ({
@@ -117,8 +124,11 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
                   className="breadTypes__content__draggable"
                 >
                   <img
+                    className={`breadTypes__content__draggable ${Bread[
+                      bread
+                    ].toLowerCase()}`}
                     src={breadSources[bread]}
-                    alt="Brot - Draggable"
+                    alt={`${Bread[bread]}`}
                   />
                 </Draggable>
               ))}
@@ -143,6 +153,11 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
           if (breadType === event.over.id) return;
 
           const tempDnDs: DnDs = { ...currentDnDs };
+          // eslint-disable-next-line no-console
+          // console.log(tempDnDs[eventBread].length);
+          // eslint-disable-next-line no-console
+          console.log(currentDnDs[breadType]);
+
           tempDnDs[breadType].splice(index, 1);
           tempDnDs[event.over.id].push(eventBread);
           setCurrentDnDs(tempDnDs);
