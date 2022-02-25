@@ -54,12 +54,12 @@ const VegetableTypes: React.FC<VegetableTypesProps> = () => {
   }
 
   const vegetableSources: string[] = [
-    frühlingszwiebel,
     karotte,
+    zucchini,
     kohlrabi,
-    lauch,
     radieschen,
-    zucchini
+    lauch,
+    frühlingszwiebel
   ];
 
   const [currentStart, setCurrentStart] = useState<
