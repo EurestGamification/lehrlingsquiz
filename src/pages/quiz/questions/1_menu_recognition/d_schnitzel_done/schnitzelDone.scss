@@ -6,7 +6,8 @@
       width: 100%;
 
       @include mixins.for-desktop {
-        width: 70%;
+        width: auto;
+        max-height: 50vh;
       }
     }
   }
