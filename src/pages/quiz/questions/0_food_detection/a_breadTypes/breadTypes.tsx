@@ -153,10 +153,6 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
           if (breadType === event.over.id) return;
 
           const tempDnDs: DnDs = { ...currentDnDs };
-          // eslint-disable-next-line no-console
-          // console.log(tempDnDs[eventBread].length);
-          // eslint-disable-next-line no-console
-          console.log(currentDnDs[breadType]);
 
           tempDnDs[breadType].splice(index, 1);
           tempDnDs[event.over.id].push(eventBread);
