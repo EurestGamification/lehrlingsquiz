@@ -97,8 +97,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
     <div className="breadTypes">
       <p className="breadTypes__heading">
         Sortiere die verschiedenen Brote zu den richtigen Brotsorten.
-        Du kannst die Brote einfach anklicken und in den passenden
-        Brotkorb fallen lassen.
+        Du kannst die Brote einfach in den passenden Brotkorb ziehen.
       </p>
       <div className="breadTypes__content">
         <DndContext sensors={sensors} onDragEnd={handleDragEnd}>

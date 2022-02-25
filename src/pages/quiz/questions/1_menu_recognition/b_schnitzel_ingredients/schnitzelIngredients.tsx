@@ -64,11 +64,9 @@ const Pan: React.FC<PanProps> = ({ ingredients }: PanProps) => {
       className="schnitzel-ingredients__content__pan"
     >
       {ingredients.map((e: string, i: number) => (
-        <>
-          <span key={`chosenIngredients-${e}`} className="draggable">
-            {e}
-          </span>
-        </>
+        <span key={`chosenIngredients-${e}`} className="draggable">
+          {e}
+        </span>
       ))}
     </div>
   );
