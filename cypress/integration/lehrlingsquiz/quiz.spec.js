@@ -31,32 +31,32 @@ describe("Lehrlingsquiz", () => {
     cy.contains("Quiz starten");
   });
 
-  it("breadTypes drag and drop works", () => {
-    cy.goto(0);
-    const gebäckDataTransfer = new DataTransfer();
-    const gebäck = cy.get("span").contains("Gebäck").parent();
-    cy.get("button").contains("Laugenstangerl").trigger("dragstart"),
-      { dataTransfer: gebäckDataTransfer };
-    gebäck.trigger("drop", { dataTransfer: gebäckDataTransfer });
-    gebäck.should("contain.text", "Laugenstangerl");
+  // it("drag and drop works (tested on breadTypes)", () => {
+  //   cy.goto(0);
+  //   const gebäckDataTransfer = new DataTransfer();
+  //   const gebäck = cy.get("span").contains("Gebäck").parent();
+  //   cy.get("button").contains("Laugenstangerl").trigger("dragstart"),
+  //     { dataTransfer: gebäckDataTransfer };
+  //   gebäck.trigger("drop", { dataTransfer: gebäckDataTransfer });
+  //   gebäck.should("contain.text", "Laugenstangerl");
 
-    const schwarzbrotDataTransfer = new DataTransfer();
-    const schwarzbrot = cy
-      .get("span")
-      .contains("Schwarzbrot")
-      .parent();
-    cy.get("button").contains("Vollkornbrot").trigger("dragstart"),
-      { dataTransfer: schwarzbrotDataTransfer };
-    schwarzbrot.trigger("drop", {
-      dataTransfer: schwarzbrotDataTransfer
-    });
-    schwarzbrot.should("contain.text", "Vollkornbrot");
+  //   const schwarzbrotDataTransfer = new DataTransfer();
+  //   const schwarzbrot = cy
+  //     .get("span")
+  //     .contains("Schwarzbrot")
+  //     .parent();
+  //   cy.get("button").contains("Vollkornbrot").trigger("dragstart"),
+  //     { dataTransfer: schwarzbrotDataTransfer };
+  //   schwarzbrot.trigger("drop", {
+  //     dataTransfer: schwarzbrotDataTransfer
+  //   });
+  //   schwarzbrot.should("contain.text", "Vollkornbrot");
 
-    const weißbrotDataTransfer = new DataTransfer();
-    const weißbrot = cy.get("span").contains("Weißbrot").parent();
-    cy.get("button").contains("Toastbrot").trigger("dragstart"),
-      { dataTransfer: weißbrotDataTransfer };
-    weißbrot.trigger("drop", { dataTransfer: weißbrotDataTransfer });
-    weißbrot.should("contain.text", "Toastbrot");
-  });
+  //   const weißbrotDataTransfer = new DataTransfer();
+  //   const weißbrot = cy.get("span").contains("Weißbrot").parent();
+  //   cy.get("button").contains("Toastbrot").trigger("dragstart"),
+  //     { dataTransfer: weißbrotDataTransfer };
+  //   weißbrot.trigger("drop", { dataTransfer: weißbrotDataTransfer });
+  //   weißbrot.should("contain.text", "Toastbrot");
+  // });
 });
