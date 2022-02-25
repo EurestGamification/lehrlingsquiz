@@ -1,7 +1,47 @@
+@use "theme:variables" as variables;
+@use "theme:mixins" as mixins;
+
 .customer-interaction {
   &__content {
+    // background-image: url("../../../../../assets/img/customer_ordering.jpg");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+
+    &__question {
+      border: 2px solid variables.$green-100;
+      margin: variables.$spacing-s;
+      padding: 0 variables.$spacing-s;
+      background-color: variables.$ivory-100;
+      border-radius: 5px;
+    }
+
+    &__answer {
+      border: 2px solid variables.$green-100;
+      margin: variables.$spacing-s;
+      padding: 0 variables.$spacing-s;
+      background-color: variables.$ivory-100;
+      border-radius: 5px;
+
+      p {
+        margin: variables.$spacing-s 0;
+
+        input {
+          margin-right: variables.$spacing-s;
+        }
+      }
+    }
+
     img {
+      height: 350px;
       width: 100%;
+      object-fit: cover;
+      display: block;
+      margin: auto;
+      padding: 0 variables.$spacing-s;
+
+      @include mixins.for-desktop {
+        width: 70%;
+      }
     }
   }
 }

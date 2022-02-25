@@ -1,7 +1,13 @@
+@use "theme:mixins" as mixins;
+
 .schnitzel-done {
   &__content {
     img {
       width: 100%;
+
+      @include mixins.for-desktop {
+        width: 70%;
+      }
     }
   }
 }

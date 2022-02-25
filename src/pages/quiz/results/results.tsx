@@ -1,24 +1,33 @@
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
 import React from "react";
-import apprentice from "@lehrlingsquiz/assets/img/results_apprentice.jpg";
+import useWindowSize from "react-use/lib/useWindowSize";
+import Confetti from "react-confetti";
+import apprentice from "@lehrlingsquiz/assets/img/results_apprentice.jpeg";
 import "./results.scss";
 
 const Results: React.FC = inject(quizStore.storeKey)(
   observer(() => {
+    const { width, height } = useWindowSize();
+
     return (
       <div className="results">
+        <Confetti
+          width={width}
+          height={height}
+          recycle={false}
+          numberOfPieces={300}
+        />
         <h2>Resultat</h2>
         <div className="results__content">
-          <img
-            className="results__content__apprentice"
-            src={apprentice}
-            alt="Eurest Lehrling"
-          />
+          <img src={apprentice} alt="Eurest apprentice" />
           <h4 className="results__content__score">
             {quizStore.score}/16 Punkte
           </h4>
-          <button onClick={() => quizStore.resetQuiz()}>
+          <button
+            onClick={() => quizStore.resetQuiz()}
+            className="results__content__restart"
+          >
             Nochmal spielen
           </button>
           {quizStore.score >= 12 ? (
@@ -33,9 +42,10 @@ const Results: React.FC = inject(quizStore.storeKey)(
               Lehrberuf ist auf alle Fälle da, nur bei ein paar
               kleinen Punkten gibt es noch etwas Nachholbedarf. Das
               macht aber gar nichts – genau diese Fertigkeiten
-              bekommst du dann bei uns vermittelt! Bewerbe dich doch
-              gleich hier: *Link* oder lies dir noch ein paar weitere
-              Informationen hier *Link* durch!
+              bekommst du dann bei uns vermittelt!
+              <br />
+              Bewerbe dich doch gleich hier: *Link* oder lies dir noch
+              ein paar weitere Informationen hier *Link* durch!
             </p>
           )}
         </div>

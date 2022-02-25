@@ -1,9 +1,27 @@
+@use "theme:variables";
+@use "theme:mixins";
+
 .results {
   &__content {
     img {
-      width: 80%;
-      display: block;
-      margin: auto;
+      width: 100%;
+
+      @include mixins.for-desktop {
+        display: block;
+        width: auto;
+        max-height: variables.$vertical-spacer-xl;
+      }
+    }
+
+    &__restart {
+      margin-left: 0;
+    }
+
+    &__score {
+      font-size: 3em;
+      color: variables.$green-100;
+      margin: variables.$spacing-3xl 0 variables.$spacing-s 0;
+      text-transform: none;
     }
   }
 }

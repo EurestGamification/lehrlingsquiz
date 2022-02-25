@@ -1,0 +1,6 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "compilerOptions": {
+    "types": ["cypress", "@4tw/cypress-drag-drop"]
+  }
+}

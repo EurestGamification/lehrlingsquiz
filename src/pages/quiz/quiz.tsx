@@ -4,17 +4,17 @@ import {
   StepIconProps,
   StepLabel,
   Stepper,
-  styled,
+  styled
 } from "@mui/material";
 import { inject, observer } from "mobx-react";
-import React from "react";
+import React, { useState } from "react";
 import { quizStore } from "src/stores/quize.store";
 import Introduction from "./introduction/introduction";
 import {
   CompanyEstimate,
   CustomerOrientation,
   FoodDetection,
-  MenuRecognition,
+  MenuRecognition
 } from "./questions";
 import "./quiz.scss";
 import Results from "./results/results";
@@ -23,7 +23,7 @@ export const questionPages = {
   0: FoodDetection,
   1: MenuRecognition,
   2: CustomerOrientation,
-  3: CompanyEstimate,
+  3: CompanyEstimate
 } as const;
 
 const ColorlibStepIconRoot = styled("div")<{
@@ -43,6 +43,7 @@ const ColorlibStepIconRoot = styled("div")<{
   borderRadius: "50%",
   justifyContent: "center",
   alignItems: "center",
+  alignSelf: "flex-start"
 }));
 
 const ColorlibStepIcon = (props: StepIconProps) => {
@@ -52,7 +53,7 @@ const ColorlibStepIcon = (props: StepIconProps) => {
     1: "1",
     2: "2",
     3: "3",
-    4: "4",
+    4: "4"
   };
 
   return (
@@ -73,6 +74,9 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
       questionPages[
         quizStore.currentQuizStep as keyof typeof questionPages
       ];
+
+    const [activatedCancel, setActivatedCancel] =
+      useState<boolean>(false);
 
     return (
       <div className="quiz">
@@ -102,15 +106,37 @@ const Quiz: React.FC<QuizProps> = inject(quizStore.storeKey)(
               <ActiveQuizPage />
             </div>
 
-            {/* <div className="quiz__actions">
-              <button
-                onClick={() =>
-                  quizStore.setScore(quizStore.score + 1)
-                }
-              >
-                increase score
-              </button>
-            </div> */}
+            <div className="quiz__actions">
+              {activatedCancel ? (
+                <div className="quiz__actions__cancel-confirm">
+                  <button
+                    className="quiz__actions__cancel-confirm__y"
+                    onClick={() => {
+                      setActivatedCancel((prev) => !prev);
+                      quizStore.resetQuiz();
+                    }}
+                  >
+                    Ja
+                  </button>
+                  <button
+                    className="quiz__actions__cancel-confirm__n"
+                    onClick={() =>
+                      setActivatedCancel((prev) => !prev)
+                    }
+                  >
+                    Nein
+                  </button>
+                  <span>Wirklich abbrechen?</span>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setActivatedCancel((prev) => !prev)}
+                  className="quiz__actions__cancel"
+                >
+                  Quiz abbrechen
+                </button>
+              )}
+            </div>
           </>
         )}
       </div>

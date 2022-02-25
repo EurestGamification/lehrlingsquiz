@@ -1,7 +1,29 @@
+@use "theme:mixins" as mixins;
+@use "theme:variables" as variables;
+
 .schnitzel-ingredients {
   &__content {
     &__pan {
+      margin: auto;
       width: 100%;
+      background-image: url("../../../../../assets/img/pan.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      // height: (variables.$spacing-5xl) * 4;
+      max-height: variables.$vertical-spacer-xl;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      aspect-ratio: 2/1;
+      padding-bottom: variables.$spacing-xl;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: 0 variables.$horizontal-spacer-s;
+
+      @include mixins.for-desktop {
+        padding: 0;
+        max-width: 50%;
+      }
     }
   }
 }

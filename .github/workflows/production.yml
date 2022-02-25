@@ -1,0 +1,25 @@
+name: lehrlingsquiz CI
+
+on:
+  push:
+    branches: [main, production]
+    pull-request: [main, production]
+
+jobs:
+  production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: clean install packages
+        run: npm ci
+      - name: lint(:fix) project files
+        run: npm run lint:fix
+      - name: run end-2-end tests
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          start: npm start
+          wait-on: "http://localhost:3000"
+      - name: create production build
+        run: npm run build

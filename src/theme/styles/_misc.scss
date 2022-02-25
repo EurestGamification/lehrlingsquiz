@@ -1,0 +1,29 @@
+@use "theme:variables" as variables;
+@use "theme:mixins" as mixins;
+
+.draggable {
+  cursor: grab;
+  outline: 0;
+  background-color: variables.$white;
+  color: variables.$black;
+  border: 2px solid variables.$green-100;
+  margin: variables.$spacing-xs;
+  padding: variables.$spacing-xs variables.$spacing-s;
+  z-index: 3;
+  font-family: variables.$franklin;
+  font-size: large;
+
+  @include mixins.for-desktop {
+    margin: variables.$spacing-s;
+    padding: variables.$spacing-s variables.$spacing-m;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.next {
+  transform: translateY(24px);
+  float: right;
+}

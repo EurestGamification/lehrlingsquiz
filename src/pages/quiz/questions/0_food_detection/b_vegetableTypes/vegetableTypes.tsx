@@ -14,6 +14,7 @@ import {
 } from "@dnd-kit/core";
 import { Droppable } from "../dnd/droppable";
 import { Draggable } from "../dnd/draggable";
+import lodash from "lodash";
 
 // ! DnD out of position when scrolling
 // TODO make droppables to sortables
@@ -22,112 +23,86 @@ import { Draggable } from "../dnd/draggable";
 
 interface VegetableTypesProps extends IFoodDetectionProps {}
 
-interface DnDs {
-  [key: string]: Vegetable | null;
-}
-
-// eslint-disable-next-line no-unused-vars
-enum Vegetable {
-  // eslint-disable-next-line no-unused-vars
-  Karotte,
-  // eslint-disable-next-line no-unused-vars
-  Zucchini,
-  // eslint-disable-next-line no-unused-vars
-  Kohlrabi,
-  // eslint-disable-next-line no-unused-vars
-  Radieschen,
-  // eslint-disable-next-line no-unused-vars
-  Lauch,
-  // eslint-disable-next-line no-unused-vars
-  Jungzwiebel
-}
-
-// eslint-disable-next-line no-unused-vars
-const vegetableSources: { [key in Vegetable]: string } = {
-  [Vegetable.Karotte]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Vegetable.Zucchini]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Vegetable.Kohlrabi]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Vegetable.Radieschen]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Vegetable.Lauch]: "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
-  [Vegetable.Jungzwiebel]:
-    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg"
-};
-
 const VegetableTypes: React.FC<VegetableTypesProps> = () => {
   const sensors: SensorDescriptor<SensorOptions>[] = useSensors(
     useSensor(TouchSensor),
     useSensor(MouseSensor)
   );
 
-  const [currentStart, setCurrentStart] = useState<Array<Vegetable>>([
-    Vegetable.Karotte,
-    Vegetable.Zucchini,
-    Vegetable.Kohlrabi,
-    Vegetable.Radieschen,
-    Vegetable.Lauch,
-    Vegetable.Jungzwiebel
-  ]);
+  // eslint-disable-next-line no-unused-vars
+  enum Vegetable {
+    // eslint-disable-next-line no-unused-vars
+    Karotte,
+    // eslint-disable-next-line no-unused-vars
+    Zucchini,
+    // eslint-disable-next-line no-unused-vars
+    Kohlrabi,
+    // eslint-disable-next-line no-unused-vars
+    Radieschen,
+    // eslint-disable-next-line no-unused-vars
+    Lauch,
+    // eslint-disable-next-line no-unused-vars
+    Jungzwiebel
+  }
 
-  const [currentDnDs, setCurrentDnDs] = useState<DnDs>({
-    [Vegetable.Karotte]: null,
-    [Vegetable.Zucchini]: null,
-    [Vegetable.Kohlrabi]: null,
-    [Vegetable.Radieschen]: null,
-    [Vegetable.Lauch]: null,
-    [Vegetable.Jungzwiebel]: null
-  });
+  const vegetableSources: string[] = [
+    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
+    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
+    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
+    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
+    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg",
+    "@lehrlingsquiz/assets/img/wiener_schnitzel.jpg"
+  ];
+
+  const [currentStart, setCurrentStart] = useState<
+    Array<string | null>
+  >(lodash.shuffle<string>(["0", "1", "2", "3", "4", "5"]));
+
+  const [currentDnDs, setCurrentDnDs] = useState<(string | null)[]>(
+    new Array(6).fill(null)
+  );
 
   return (
-    <div className="vegetables">
-      <p className="vegetables__heading">
+    <div className="vegetableTypes">
+      <p className="vegetableTypes__heading">
         Als Koch:Köchin arbeitet man täglich mit frischem Gemüse.
         Erkennst du die verschiedenen Gemüsesorten? Ziehe die
         Bezeichnung zu dem richtigen Gemüse.
       </p>
-      <div className="vegetables__content">
+      <div className="vegetableTypes__content">
         <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
           <Droppable
             id="Start"
-            className="vegetables__content__droppable vegetables__content__droppable__start"
+            className="vegetableTypes__content__droppable vegetableTypes__content__droppable__start"
           >
             {currentStart.map((vegetable) => (
               <Draggable
-                id={Vegetable[vegetable]}
+                id={vegetable}
                 key={vegetable}
-                className="vegetables__content__draggable"
+                className="vegetableTypes__content__draggable"
               >
-                {Vegetable[vegetable]}
+                {Vegetable[vegetable as keyof typeof Vegetable]}
               </Draggable>
             ))}
           </Droppable>
 
-          {Object.keys(currentDnDs).map((vegetableType, vTi) => (
+          {currentDnDs.map((vegetable, vTi) => (
             <Droppable
-              id={Vegetable[vegetableType as keyof typeof Vegetable]}
+              id={vTi}
               key={vTi}
-              className="vegetables__content__droppable vegetables__content__droppable__vegetable"
+              className="vegetableTypes__content__droppable vegetableTypes__content__droppable__vegetable"
             >
               <img
-                src={
-                  vegetableSources[
-                    vegetableType as unknown as keyof typeof vegetableSources
-                  ]
-                }
-                className="vegetables__content__droppable__vegetable__img"
+                src={vegetableSources[vTi]}
+                className="vegetableTypes__content__droppable__vegetable__img"
                 alt="Vegetable - Droppable"
               />
-              {currentDnDs[vegetableType] != null && (
+              {vegetable !== null && (
                 <Draggable
-                  id={
-                    Vegetable[vegetableType as keyof typeof Vegetable]
-                  }
-                  className="vegetables__content__draggable"
+                  id={vegetable}
+                  className="vegetableTypes__content__draggable"
                 >
-                  {Vegetable[currentDnDs[vegetableType] ?? 0]}
+                  {Vegetable[vegetable as keyof typeof Vegetable]}
                 </Draggable>
               )}
             </Droppable>
@@ -135,56 +110,47 @@ const VegetableTypes: React.FC<VegetableTypesProps> = () => {
         </DndContext>
       </div>
 
-      <button onClick={() => checkAnswers()}>Weiter</button>
+      <button className="next" onClick={() => checkAnswers()}>
+        Weiter
+      </button>
     </div>
   );
 
   function handleDragEnd(event: DragEndEvent) {
     if (event.over) {
-      const index = currentStart.indexOf(
-        Vegetable[event.active.id as keyof typeof Vegetable]
-      );
-      if (index > -1) {
-        if (event.active.id === event.over.id) return;
-        currentStart.splice(index, 1);
-        setCurrentStart(currentStart);
+      const newStart = [...currentStart];
+      const newCurrent = [...currentDnDs];
+
+      const StartI = newStart.indexOf(event.active.id);
+      const currentI = newCurrent.indexOf(event.active.id);
+
+      if (StartI > -1) {
+        if (event.over.id === "Start") return;
+        newStart.splice(StartI, 1);
+        newCurrent[+event.over.id] !== null &&
+          newStart.push(newCurrent[+event.over.id]);
+        newCurrent[+event.over.id] = event.active.id;
       } else {
-        for (const vegetable in currentDnDs) {
-          if (
-            currentDnDs[vegetable] ===
-            Vegetable[event.active.id as keyof typeof Vegetable]
-          ) {
-            if (
-              Vegetable[vegetable as keyof typeof Vegetable] ===
-              Vegetable[event.over.id as keyof typeof Vegetable]
-            ) {
-              return;
-            }
-            currentDnDs[vegetable] = null;
-            setCurrentDnDs(currentDnDs);
-          }
+        if (event.over.id === "" + currentI) return;
+        newCurrent[currentI] = null;
+        if (event.over.id === "Start") {
+          newStart.push(event.active.id);
+        } else {
+          newCurrent[+event.over.id] !== null &&
+            (newCurrent[currentI] = newCurrent[+event.over.id]);
+          newCurrent[+event.over.id] = event.active.id;
         }
       }
 
-      if (event.over.id === "Start") {
-        currentStart.push(
-          Vegetable[event.over.id as keyof typeof Vegetable]
-        );
-        setCurrentStart(currentStart);
-      } else {
-        currentDnDs[
-          Vegetable[event.over.id as keyof typeof Vegetable]
-        ] = Vegetable[event.active.id as keyof typeof Vegetable];
-      }
-      setCurrentDnDs(currentDnDs);
+      setCurrentStart(newStart);
+      setCurrentDnDs(newCurrent);
     }
   }
 
   function checkAnswers() {
     let correct: number = 0;
     for (const vegetable in currentDnDs) {
-      Vegetable[vegetable as keyof typeof Vegetable] ===
-        currentDnDs[vegetable] && correct++;
+      vegetable === currentDnDs[vegetable] && correct++;
     }
 
     const VegetableCount: number = Object.keys(Vegetable).length / 2;

@@ -15,6 +15,7 @@ import {
 import { Droppable } from "../dnd/droppable";
 import { Draggable } from "../dnd/draggable";
 import lodash from "lodash";
+import { Label } from "@lehrlingsquiz/components";
 
 // ! DnD out of position when scrolling
 // TODO make droppables to sortables
@@ -104,9 +105,10 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
               }
             >
               {breadType !== "Start" && (
-                <span className="breadTypes__content__droppable__basket__title">
-                  {breadType}
-                </span>
+                <Label
+                  text={breadType}
+                  className="breadTypes__content__droppable__basket__title"
+                />
               )}
               {currentDnDs[breadType].map((bread) => (
                 <Draggable
@@ -124,7 +126,9 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
           ))}
         </DndContext>
       </div>
-      <button onClick={() => checkAnswers()}>Weiter</button>
+      <button className="next" onClick={() => checkAnswers()}>
+        Weiter
+      </button>
     </div>
   );
 

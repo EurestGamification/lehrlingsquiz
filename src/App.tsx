@@ -8,7 +8,7 @@ import {
   Theme,
   ThemeProvider
 } from "@mui/material/styles";
-import { colors } from "./theme";
+import { colors } from "@lehrlingsquiz/theme";
 
 const stores = {
   quizStore

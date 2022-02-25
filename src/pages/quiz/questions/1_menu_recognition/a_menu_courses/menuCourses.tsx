@@ -8,13 +8,13 @@ import {
 } from "react-sortable-hoc";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import "./menuCourses.scss";
-import { colors } from "../../../../../theme";
+// import { colors } from "@lehrlingsquiz/theme";
 
 export type MenuItem = { id: number; name: string };
 export type MenuItems = MenuItem[];
 
 const SortableItem = SortableElement(({ value }: any) => (
-  <div className="menu-courses__items__item">{value}</div>
+  <div className="menu-courses__items__item draggable">{value}</div>
 ));
 
 const SortableList = SortableContainer(({ items }: any) => {
@@ -30,7 +30,7 @@ const SortableList = SortableContainer(({ items }: any) => {
           {index + 1 !== items.length && (
             <KeyboardDoubleArrowDown
               className="menu-courses__items__item__connector"
-              sx={{ color: colors.green_100 }}
+              sx={{ color: "#000" }}
             />
           )}
         </>
@@ -84,6 +84,7 @@ const MenuCourses: React.FC<MenuCoursesProps> = ({
             checkAnswers();
             onStepFinished();
           }}
+          className="next"
         >
           Weiter
         </button>

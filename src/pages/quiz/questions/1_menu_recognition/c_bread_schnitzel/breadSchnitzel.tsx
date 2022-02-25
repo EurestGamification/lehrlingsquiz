@@ -8,37 +8,46 @@ import {
   useDraggable,
   useDroppable,
   useSensor,
-  useSensors,
+  useSensors
 } from "@dnd-kit/core";
 import React, { useReducer } from "react";
-import bowl from "@lehrlingsquiz/assets/img/bowl.png";
 import "./breadSchnitzel.scss";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import { quizStore } from "@lehrlingsquiz/stores";
 import _ from "lodash";
+import { Label } from "@lehrlingsquiz/components";
 
 const bowlNamePrefix = "bowl" as const;
 
 interface BowlProps {
-  name: string;
+  text: string;
+  id: string;
+  enabled?: boolean;
 }
 
-const Bowl: React.FC<BowlProps> = ({ name }: BowlProps) => {
+const Bowl: React.FC<BowlProps> = ({
+  text,
+  id,
+  enabled = true
+}: BowlProps) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: name,
+    id: id,
+    disabled: !enabled
   });
   const style = {
-    backgroundColor: isOver ? "#dfdfdf" : undefined,
+    opacity: isOver ? 0.5 : undefined
   };
 
   return (
-    <img
+    <div
       ref={setNodeRef}
       style={style}
-      src={bowl}
-      alt="Schnitzel Panierzutaten Schüssel"
-      className="bread-schnitzel__content__bowl-wrapper__bowl"
-    />
+      className={`bread-schnitzel__content__bowl-wrapper__bowl ${
+        !enabled ? "bowl-disabled" : ""
+      }`}
+    >
+      <Label text={text} />
+    </div>
   );
 };
 
@@ -47,15 +56,15 @@ interface DraggableIngredientProps {
 }
 
 const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
-  name,
+  name
 }: DraggableIngredientProps) => {
   const { attributes, listeners, setNodeRef, transform } =
     useDraggable({
-      id: name,
+      id: name
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
       }
     : undefined;
 
@@ -65,6 +74,7 @@ const DraggableIngredient: React.FC<DraggableIngredientProps> = ({
       style={style}
       {...listeners}
       {...attributes}
+      className="draggable"
     >
       {name}
     </button>
@@ -79,7 +89,7 @@ type CombinedIngredients = {
 interface BreadSchnitzelProps extends IMenuRecognitionProps {}
 
 const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
-  onStepFinished,
+  onStepFinished
 }: BreadSchnitzelProps) => {
   const sensors: SensorDescriptor<SensorOptions>[] = useSensors(
     useSensor(TouchSensor),
@@ -90,17 +100,17 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
   const correctlySortedIngredients = [
     availableIngredients[2],
     availableIngredients[0],
-    availableIngredients[1],
+    availableIngredients[1]
   ];
 
   const [ingredients, setIngredients] = useReducer(
     (state: CombinedIngredients, newState: CombinedIngredients) => ({
       ...state,
-      ...newState,
+      ...newState
     }),
     {
       ingredients: availableIngredients,
-      sortedIngredients: sortedIngredientsBuffer,
+      sortedIngredients: sortedIngredientsBuffer
     }
   );
 
@@ -118,7 +128,7 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
       ingredients: ingredients.ingredients.filter(
         (e: string) => e !== ingredient
       ),
-      sortedIngredients: tempSortedIngredients,
+      sortedIngredients: tempSortedIngredients
     });
   };
 
@@ -135,7 +145,7 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
   const resetIngredients: () => void = () => {
     setIngredients({
       ingredients: availableIngredients,
-      sortedIngredients: sortedIngredientsBuffer,
+      sortedIngredients: sortedIngredientsBuffer
     });
   };
 
@@ -162,20 +172,22 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
               )
             )}
           </div>
+          <button onClick={() => resetIngredients()}>
+            Zutaten Zurücksetzen
+          </button>
           <div className="bread-schnitzel__content__bowl-wrapper">
             {ingredients.sortedIngredients.map(
-              (s: string, i: number) =>
-                !s ? (
-                  <Bowl
-                    key={`${bowlNamePrefix}-${i}`}
-                    name={`${bowlNamePrefix}-${i}`}
-                  />
-                ) : (
-                  "full"
-                )
+              (s: string, i: number) => (
+                <Bowl
+                  key={`${bowlNamePrefix}-${i}`}
+                  id={`${bowlNamePrefix}-${i}`}
+                  text={`${i + 1}. Zutat  `}
+                  enabled={!s}
+                />
+              )
             )}
           </div>
-          <ul>
+          <ul className="bread-schnitzel__content__choice">
             {ingredients.sortedIngredients.map(
               (s: string, i: number) =>
                 s && (
@@ -186,14 +198,12 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
             )}
           </ul>
 
-          <button onClick={() => resetIngredients()}>
-            Zutaten Zurücksetzen
-          </button>
           <button
             onClick={() => {
               checkAnswers();
               onStepFinished();
             }}
+            className="next"
           >
             Weiter
           </button>

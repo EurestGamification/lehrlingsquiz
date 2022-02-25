@@ -1,4 +1,64 @@
+@use "theme:variables" as variables;
+@use "theme:mixins" as mixins;
+
 .vegetableTypes {
   &__heading {
+  }
+
+  &__content {
+    display: grid;
+    margin-bottom: variables.$spacing-l;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+      "Start Start Start"
+      ". . .";
+
+    &__droppable {
+      box-sizing: border-box;
+      display: flex;
+
+      &__start {
+        padding: variables.$spacing-xs;
+        margin-bottom: variables.$spacing-xl;
+        border: 1px solid black;
+        min-height: 40px;
+        width: 100%;
+        height: fit-content;
+        grid-area: Start;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        @include mixins.for-desktop {
+          margin-bottom: variables.$spacing-3xl;
+          width: fit-content;
+          max-height: 63px;
+          min-height: 50px;
+          min-width: 300px;
+        }
+      }
+
+      &__vegetable {
+        height: fit-content;
+        min-height: 145px;
+        width: 110px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        justify-self: center;
+        padding-top: variables.$spacing-l;
+
+        @include mixins.for-desktop {
+          min-height: 270px;
+          width: 200px;
+        }
+      }
+
+      &.isOver {
+        opacity: variables.$opacity-50;
+      }
+    }
   }
 }
