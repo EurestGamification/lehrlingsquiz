@@ -61,9 +61,7 @@
 
       &__start {
         padding: variables.$spacing-xs;
-        margin-bottom: variables.$spacing-xl;
         border: 1px solid black;
-        min-height: 40px;
         max-height: unset;
         width: 100%;
         height: fit-content;
@@ -72,10 +70,11 @@
         align-items: center;
         justify-content: flex-start;
         flex-wrap: wrap;
+        min-height: variables.$spacing-5xl * 1.5;
+        margin-bottom: variables.$spacing-5xl;
 
         @include mixins.for-desktop {
-          margin-bottom: variables.$spacing-5xl;
-          min-height: variables.$spacing-5xl;
+          min-height: variables.$spacing-5xl * 2;
         }
       }
 

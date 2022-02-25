@@ -20,23 +20,19 @@
 
       &__start {
         padding: variables.$spacing-xs;
-        margin-bottom: variables.$spacing-xl;
         border: 1px solid black;
         min-height: 40px;
         width: 100%;
         height: fit-content;
         grid-area: Start;
-        flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
         flex-wrap: wrap;
+        min-height: variables.$spacing-5xl * 1.2;
 
         @include mixins.for-desktop {
+          align-items: center;
           margin-bottom: variables.$spacing-3xl;
-          width: fit-content;
-          max-height: 63px;
-          min-height: 50px;
-          min-width: 300px;
         }
       }
 
