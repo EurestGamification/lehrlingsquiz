@@ -10,9 +10,14 @@ import { inject, observer } from "mobx-react";
 import React, { lazy, Suspense, useState } from "react";
 import { quizStore } from "src/stores/quize.store";
 import Introduction from "./introduction/introduction";
-
 import "./quiz.scss";
 import Results from "./results/results";
+// import {
+//   FoodDetection,
+//   MenuRecognition,
+//   CustomerOrientation,
+//   CompanyEstimate
+// } from "./questions";
 
 export const questionPages = {
   0: lazy(() =>
@@ -36,6 +41,13 @@ export const questionPages = {
     }))
   )
 } as const;
+
+// export const questionPages = {
+//   0: FoodDetection,
+//   1: MenuRecognition,
+//   2: CustomerOrientation,
+//   3: CompanyEstimate
+// } as const;
 
 const ColorlibStepIconRoot = styled("div")<{
   ownerState: { completed?: boolean; active?: boolean };
