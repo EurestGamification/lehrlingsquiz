@@ -22,9 +22,6 @@
 
     @include mixins.for-desktop {
       margin: auto;
-      overflow: hidden;
-      position: relative;
-      object-position: center 400px;
     }
   }
 
