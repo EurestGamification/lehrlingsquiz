@@ -2,15 +2,18 @@
 
 .company-estimate {
   &__content {
-    .inaktiv{
+    .inaktiv {
       display: none;
     }
 
-    .false{
+    .false {
       border: 2px solid variables.$red;
     }
-    .true{
+    .true {
       border: 2px solid variables.$green-75;
+    }
+    &__answer-section button:disabled {
+      color: black;
     }
   }
 }

@@ -40,6 +40,7 @@
         margin-bottom: variables.$spacing-xl;
         border: 1px solid black;
         min-height: 40px;
+        max-height: unset;
         width: 100%;
         height: fit-content;
         grid-area: Start;
