@@ -1,13 +1,11 @@
 import { quizStore } from "@lehrlingsquiz/stores";
 import { inject, observer } from "mobx-react";
 import React, { useState } from "react";
-import CustomerInstruction from "./a_customer_instruction/customerInstruction";
 import CustomerInteraction from "./b_customer_interaction/customerInteraction";
 import "./customerOrientation.scss";
 
 const customerOrientationSteps = {
-  0: CustomerInstruction,
-  1: CustomerInteraction
+  0: CustomerInteraction
 } as const;
 
 export interface ICustomerOrientationProps {

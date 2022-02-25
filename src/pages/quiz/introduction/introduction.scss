@@ -12,14 +12,19 @@
 
     &__apprentice {
       width: 100%;
+
+      @include mixins.for-desktop {
+        object-position: center top;
+        object-fit: cover;
+        height: 60vh;
+      }
     }
 
     @include mixins.for-desktop {
       margin: auto;
-      height: variables.$vertical-spacer-xl * 1.5;
       overflow: hidden;
-      object-fit: cover;
-      object-position: top;
+      position: relative;
+      object-position: center 400px;
     }
   }
 
