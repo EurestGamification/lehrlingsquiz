@@ -8,8 +8,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "react-app-rewired test",
-    "e2e": "cypress run",
-    "e2e:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
     "eject": "react-app-rewired eject"
   },
   "dependencies": {
