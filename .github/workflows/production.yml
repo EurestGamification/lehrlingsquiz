@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       - name: clean install packages
         run: npm ci
       - name: lint(:fix) project files
