@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState } from "react";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IFoodDetectionProps } from "../foodDetection";
@@ -149,7 +150,12 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
         const index = currentDnDs[breadType].indexOf(eventBread);
 
         if (index > -1) {
-          if (breadType === event.over.id) return;
+          if (
+            breadType === event.over.id ||
+            (currentDnDs[event.over.id].length > 1 &&
+              event.over.id !== "Start")
+          )
+            return;
 
           const tempDnDs: DnDs = { ...currentDnDs };
 
