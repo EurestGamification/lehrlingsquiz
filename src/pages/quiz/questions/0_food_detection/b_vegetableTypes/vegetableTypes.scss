@@ -2,9 +2,6 @@
 @use "theme:mixins" as mixins;
 
 .vegetableTypes {
-  &__heading {
-  }
-
   &__content {
     display: grid;
     margin-bottom: variables.$spacing-l;
