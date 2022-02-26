@@ -37,7 +37,7 @@ Cypress.Commands.add("goto", (section) => {
   cy.get("button").contains("Quiz starten").click();
 
   for (let i = 0; i < section; i++) {
-    cy.get("button").contains("Weiter").click();
+    cy.get("button.next").contains("Weiter").click();
   }
 });
 
