@@ -87,6 +87,7 @@
         justify-self: center;
         height: variables.$spacing-5xl * 3;
         width: 120%;
+        max-width: variables.$horizontal-spacer-xl;
         // padding-top: variables.$spacing-3xl;
 
         @include mixins.for-desktop {
