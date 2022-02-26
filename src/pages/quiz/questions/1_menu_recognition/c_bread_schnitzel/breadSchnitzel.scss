@@ -6,14 +6,14 @@
     &__bowl-wrapper {
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
       margin-top: variables.$spacing-l;
 
       &__bowl {
         flex: 1;
         height: variables.$horizontal-spacer-m;
-        max-height: variables.$vertical-spacer-l;
+        max-height: variables.$vertical-spacer-m;
         padding: variables.$spacing-s;
         background-image: url("../../../../../assets/img/bowl.png");
         background-size: contain;

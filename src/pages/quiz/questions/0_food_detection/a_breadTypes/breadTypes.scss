@@ -15,6 +15,7 @@
       padding: 0;
       border: 0;
       background-color: transparent;
+      margin: 0;
 
       img {
         width: variables.$spacing-3xl;
@@ -86,17 +87,22 @@
         justify-self: center;
         height: variables.$spacing-5xl * 3;
         width: 120%;
-        padding-top: variables.$spacing-xxl;
+        // padding-top: variables.$spacing-3xl;
 
         @include mixins.for-desktop {
-          padding-top: variables.$vertical-spacer-xs;
+          // padding-top: variables.$vertical-spacer-xs;
           width: 22vw;
           height: variables.$vertical-spacer-xl;
         }
 
         &__title {
-          position: absolute;
-          transform: translateY(-100%);
+          position: relative;
+          transform: translateY(-50%);
+          margin-bottom: variables.$spacing-m;
+
+          @include mixins.for-desktop {
+            margin-bottom: variables.$spacing-l;
+          }
         }
       }
 
