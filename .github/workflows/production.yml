@@ -10,16 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout
       - uses: actions/checkout@v2
       - name: clean install packages
         run: npm ci
       - name: lint(:fix) project files
         run: npm run lint:fix
-      - name: run end-2-end tests
+      - name: cypress end-2-end tests
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
           start: npm start
+          build: npm run build
           wait-on: "http://localhost:3000"
       - name: create production build
         run: npm run build
