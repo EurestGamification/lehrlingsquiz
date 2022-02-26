@@ -76,28 +76,27 @@
       }
 
       &__basket {
-        height: fit-content;
-        min-height: 145px;
-        width: 110px;
         background-image: url("../../../../../assets/img/basket.png");
-        background-position: top;
+        background-position: center;
         background-repeat: no-repeat;
-        background-size: 110px 145px;
+        background-size: contain;
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
         justify-self: center;
-        padding-top: variables.$spacing-l;
+        height: variables.$spacing-5xl * 3;
+        width: 120%;
+        padding-top: variables.$spacing-xxl;
 
         @include mixins.for-desktop {
-          min-height: 270px;
-          width: 200px;
-          background-size: 200px 270px;
+          padding-top: variables.$vertical-spacer-xs;
+          width: 22vw;
+          height: variables.$vertical-spacer-xl;
         }
 
         &__title {
           position: absolute;
-          transform: translateY(-145%);
+          transform: translateY(-100%);
         }
       }
 
