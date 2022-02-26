@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IFoodDetectionProps } from "../foodDetection";
