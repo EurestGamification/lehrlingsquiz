@@ -88,10 +88,8 @@
         height: variables.$spacing-5xl * 3;
         width: 120%;
         max-width: variables.$horizontal-spacer-xl;
-        // padding-top: variables.$spacing-3xl;
 
         @include mixins.for-desktop {
-          // padding-top: variables.$vertical-spacer-xs;
           width: 22vw;
           height: variables.$vertical-spacer-xl;
         }
