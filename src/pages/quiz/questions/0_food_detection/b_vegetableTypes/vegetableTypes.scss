@@ -21,7 +21,6 @@
       &__start {
         padding: variables.$spacing-xs;
         border: 1px solid black;
-        min-height: 40px;
         width: 100%;
         height: fit-content;
         grid-area: Start;
@@ -38,7 +37,6 @@
 
       &__vegetable {
         height: fit-content;
-        min-height: 145px;
         flex-direction: column;
         display: flex;
         justify-content: center;
@@ -47,7 +45,7 @@
         padding-top: variables.$spacing-l;
 
         &__img {
-          height: variables.$spacing-5xl * 1.5;
+          height: variables.$spacing-5xl * 1.3;
 
           @include mixins.for-desktop {
             height: variables.$spacing-5xl * 2;
