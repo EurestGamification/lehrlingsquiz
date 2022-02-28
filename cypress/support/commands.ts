@@ -32,7 +32,12 @@ Cypress.Commands.add(
   }
 );
 
-Cypress.Commands.add("goto", (section) => {
+enum QuizSection {
+
+}
+
+Cypress.Commands.add("goto", (section: QuizSection) => {
+  
   cy.visit("/");
   cy.get("button").contains("Quiz starten").click();
 
@@ -43,10 +48,4 @@ Cypress.Commands.add("goto", (section) => {
 
 Cypress.Commands.add("weiter", () => {
   cy.get("button").contains("Weiter").click();
-});
-
-Cypress.Commands.add("dragTo", (subject, to, dataTransfer) => {
-  subject.trigger("dragstart"), { dataTransfer };
-
-  to.trigger("drop", { dataTransfer });
 });

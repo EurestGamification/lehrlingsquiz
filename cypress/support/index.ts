@@ -13,6 +13,9 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// load type definitions that come with Cypress module
+/// <reference types="cypress" />
+
 // Import commands.js using ES2015 syntax:
 import "./commands";
 
@@ -21,3 +24,13 @@ import "./commands";
 
 // Additional packages
 import "cypress-hmr-restarter";
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      goto(index: number): Chainable<Element>;
+      forceClick(value: string): Chainable<Element>;
+      weiter(): Chainable<Element>;
+    }
+  }
+}
