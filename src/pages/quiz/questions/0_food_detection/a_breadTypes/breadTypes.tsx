@@ -143,18 +143,18 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
 
   function handleDragEnd(event: DragEndEvent) {
     if (event.over) {
+      if (
+        currentDnDs[event.over.id].length > 1 &&
+        event.over.id !== "Start"
+      )
+        return;
       for (const breadType in currentDnDs) {
         const eventBread: Bread =
           Bread[event.active.id as keyof typeof Bread];
         const index = currentDnDs[breadType].indexOf(eventBread);
 
         if (index > -1) {
-          if (
-            breadType === event.over.id ||
-            (currentDnDs[event.over.id].length > 1 &&
-              event.over.id !== "Start")
-          )
-            return;
+          if (breadType === event.over.id) return;
 
           const tempDnDs: DnDs = { ...currentDnDs };
 
