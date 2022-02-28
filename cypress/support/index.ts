@@ -18,6 +18,7 @@
 
 // Import commands.js using ES2015 syntax:
 import "./commands";
+import { QuizSectionType } from "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
@@ -28,9 +29,9 @@ import "cypress-hmr-restarter";
 declare global {
   namespace Cypress {
     interface Chainable {
-      goto(index: number): Chainable<Element>;
+      goto(index: QuizSectionType): Chainable<Element>;
       forceClick(value: string): Chainable<Element>;
-      weiter(): Chainable<Element>;
+      quizNext(): Chainable<Element>;
     }
   }
 }

@@ -24,6 +24,9 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import { repeatAction } from "./helpers";
+import { clickStartQuiz } from "./helpers/clickStartQuiz";
+
 Cypress.Commands.add(
   "forceClick",
   { prevSubject: "element" },
@@ -32,20 +35,92 @@ Cypress.Commands.add(
   }
 );
 
-enum QuizSection {
-
-}
-
-Cypress.Commands.add("goto", (section: QuizSection) => {
-  
-  cy.visit("/");
-  cy.get("button").contains("Quiz starten").click();
-
-  for (let i = 0; i < section; i++) {
-    cy.get("button.next").contains("Weiter").click();
-  }
+Cypress.Commands.add("quizNext", () => {
+  cy.get("button.next").contains("Weiter").click();
 });
 
-Cypress.Commands.add("weiter", () => {
-  cy.get("button").contains("Weiter").click();
+export enum QuizSection {
+  introduction = "introduction",
+  breadTypes = "breadTypes",
+  vegetableTypes = "vegetableTypes",
+  menuCourses = "menuCourses",
+  schnitzelIngredients = "schnitzelIngredients",
+  breadSchnitzel = "breadSchnitzel",
+  schnitzelDone = "schnitzelDone",
+  customerOrientation = "customerOrientation",
+  companyEstimate1 = "companyEstimate1",
+  companyEstimate2 = "companyEstimate2",
+  companyEstimate3 = "companyEstimate3",
+  results = "results"
+}
+export type QuizSectionType = `${QuizSection}`;
+
+const links = {
+  [QuizSection.introduction]: () => {
+    cy.visit("/");
+  },
+  [QuizSection.breadTypes]: () => {
+    clickStartQuiz();
+  },
+  [QuizSection.vegetableTypes]: () => {
+    clickStartQuiz();
+    cy.quizNext();
+  },
+  [QuizSection.menuCourses]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 2);
+  },
+  [QuizSection.schnitzelIngredients]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 3);
+  },
+  [QuizSection.breadSchnitzel]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 4);
+  },
+  [QuizSection.schnitzelDone]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 5);
+  },
+  [QuizSection.customerOrientation]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 6);
+  },
+  [QuizSection.companyEstimate1]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 7);
+  },
+  [QuizSection.companyEstimate2]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 7);
+    cy.get("button").contains("Ca. 1.100 Mitarbeiter:innen").click();
+    cy.quizNext();
+  },
+  [QuizSection.companyEstimate3]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 7);
+    cy.get("button").contains("Ca. 1.100 Mitarbeiter:innen").click();
+    cy.quizNext();
+    cy.get("button")
+      .contains("Durchschnittlich 30 Lehrlinge")
+      .click();
+    cy.quizNext();
+  },
+  [QuizSection.results]: () => {
+    clickStartQuiz();
+    repeatAction(cy.quizNext, 7);
+    cy.get("button").contains("Ca. 1.100 Mitarbeiter:innen").click();
+    cy.quizNext();
+    cy.get("button")
+      .contains("Durchschnittlich 30 Lehrlinge")
+      .click();
+    cy.quizNext();
+    cy.get("button").contains("Ca. 60 Restaurants").click();
+    cy.quizNext();
+  }
+};
+
+Cypress.Commands.add("goto", (section: QuizSectionType) => {
+  cy.visit("/");
+  links[section]();
 });
