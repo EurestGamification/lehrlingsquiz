@@ -173,7 +173,7 @@ const BreadSchnitzel: React.FC<BreadSchnitzelProps> = ({
             )}
           </div>
           <button onClick={() => resetIngredients()}>
-            Zutaten Zurücksetzen
+            Zutaten zurücksetzen
           </button>
           <div className="bread-schnitzel__content__bowl-wrapper">
             {ingredients.sortedIngredients.map(

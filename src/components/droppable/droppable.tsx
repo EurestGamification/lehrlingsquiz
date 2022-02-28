@@ -1,17 +1,30 @@
 import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 
-export const Droppable = (props: any) => {
+export interface DroppableProps {
+  id?: any;
+  className?: string;
+  // eslint-disable-next-line no-undef
+  children?: any;
+}
+
+export const Droppable: React.FC<DroppableProps> = ({
+  id,
+  className,
+  children
+}: DroppableProps) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable"
+    id: id ?? "droppable"
   });
-  const style = {
-    color: isOver ? "green" : undefined
-  };
 
   return (
-    <div ref={setNodeRef} style={style}>
-      {props.children}
+    <div
+      ref={setNodeRef}
+      className={
+        (className ? className + " " : "") + (isOver ? "isOver" : "")
+      }
+    >
+      {children ?? ""}
     </div>
   );
 };

@@ -3,6 +3,9 @@
 
 .introduction {
   &__images {
+    margin: auto;
+    padding: auto;
+
     &__claim {
       padding-left: variables.$spacing-xl;
       width: 100%;
@@ -16,7 +19,7 @@
       @include mixins.for-desktop {
         object-position: center top;
         object-fit: cover;
-        height: 60vh;
+        height: 55vh;
       }
     }
 
@@ -26,11 +29,9 @@
   }
 
   &__instruction {
-    text-align: center;
   }
 
   &__action-wrapper {
     display: flex;
-    justify-content: center;
   }
 }

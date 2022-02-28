@@ -3,13 +3,35 @@
 
 .schnitzel-ingredients {
   &__content {
+    &__instruction {
+    }
+
+    &__start {
+      border: 1px solid black;
+      margin-bottom: variables.$spacing-xxl;
+      padding: variables.$spacing-xs;
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: space-between;
+
+      &__ingredient-counter {
+        margin: auto 0 auto variables.$spacing-l;
+        font-weight: 600;
+      }
+
+      @include mixins.for-desktop {
+        justify-content: flex-start;
+      }
+    }
+
     &__pan {
       margin: auto;
       width: 100%;
       background-image: url("../../../../../assets/img/pan.png");
       background-size: contain;
       background-repeat: no-repeat;
-      // height: (variables.$spacing-5xl) * 4;
       max-height: variables.$vertical-spacer-xl;
       display: flex;
       justify-content: flex-end;

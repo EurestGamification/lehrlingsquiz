@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import React, { useState } from "react";
 import "./schnitzelIngredients.scss";
 import { countMatches } from "@lehrlingsquiz/util";
@@ -16,6 +19,7 @@ import {
 import { quizStore } from "@lehrlingsquiz/stores";
 import { IMenuRecognitionProps } from "../menuRecognition";
 import _ from "lodash";
+import { Droppable } from "@lehrlingsquiz/components";
 
 const correctIngredients: string[] = [
   "Eier",
@@ -44,6 +48,7 @@ const availaleIngredients: string[] = [
 ];
 
 const droppablePanId = "pan" as const;
+const droppableStartId = "start" as const;
 
 interface PanProps {
   ingredients: string[];
@@ -64,9 +69,10 @@ const Pan: React.FC<PanProps> = ({ ingredients }: PanProps) => {
       className="schnitzel-ingredients__content__pan"
     >
       {ingredients.map((e: string, i: number) => (
-        <span key={`chosenIngredients-${e}`} className="draggable">
-          {e}
-        </span>
+        <DraggableIngredient
+          title={e}
+          key={`chosenIngredients-${e}`}
+        ></DraggableIngredient>
       ))}
     </div>
   );
@@ -126,13 +132,22 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
 
   const handleDragEnd = (event: DragEndEvent) => {
     const ingredient = event.active.id;
+    const target = event.over?.id;
 
     if (
-      event.over?.id === droppablePanId &&
-      chosenIngredients.length < 8
+      target === droppablePanId &&
+      chosenIngredients.length < 8 &&
+      !chosenIngredients.includes(ingredient)
     ) {
       setIngredients(ingredients.filter((e) => e !== ingredient));
-      setChosenIngregients([...chosenIngredients, ingredient]);
+      setChosenIngregients([ingredient, ...chosenIngredients]);
+      return;
+    } else if (target === droppableStartId) {
+      setIngredients((prev) => [...prev, ingredient]);
+      setChosenIngregients(
+        chosenIngredients.filter((e) => e !== ingredient)
+      );
+      return;
     }
   };
 
@@ -157,18 +172,28 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
             richtigen Zutaten in die Pfanne!
           </p>
           <h4>Verfügbare Zutaten</h4>
-          <p>
+          <Droppable
+            className="schnitzel-ingredients__content__start"
+            id={droppableStartId}
+          >
             {ingredients.map((ingredient: string, i: number) => (
               <span key={ingredient}>
                 <DraggableIngredient title={ingredient} />
                 {i !== ingredients.length - 1 && " "}
               </span>
             ))}
-          </p>
+          </Droppable>
 
-          <button onClick={() => resetIngredients()}>
-            Zutaten Zurücksetzen
-          </button>
+          <div className="schnitzel-ingredients__content__actions">
+            <button onClick={() => resetIngredients()}>
+              Zutaten zurücksetzen
+            </button>
+            <p className="schnitzel-ingredients__content__actions__ingredient-counter">
+              {chosenIngredients.length} von{" "}
+              {correctIngredients.length} Zutaten
+            </p>
+          </div>
+
           <Pan ingredients={chosenIngredients} />
 
           <button

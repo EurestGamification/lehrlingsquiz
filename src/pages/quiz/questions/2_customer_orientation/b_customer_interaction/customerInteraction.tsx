@@ -33,11 +33,11 @@ const CustomerInteraction: React.FC<CustomerInteractionProps> =
         <div className="customer-interaction">
           <div className="customer-interaction__content">
             <p className="customer-interaction__content__instruction">
-              Bei uns in der Lehre zum Koch/zur Köchin bist du auch in
+              Bei uns in der Lehre zum:zur Koch:Köchin bist du auch in
               der Essensausgabe eingeteilt.
               <br />
-              Ein Kunde hat einen besonderen Wunsch – wie reagierst
-              du?
+              Ein:e Kund:in hat einen besonderen Wunsch – wie
+              reagierst du?
             </p>
             <div className="customer-interaction__content__question">
               <p>

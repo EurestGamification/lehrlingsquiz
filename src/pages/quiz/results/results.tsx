@@ -24,30 +24,40 @@ const Results: React.FC = inject(quizStore.storeKey)(
           <h4 className="results__content__score">
             {quizStore.score}/16 Punkte
           </h4>
-          <button
-            onClick={() => quizStore.resetQuiz()}
-            className="results__content__restart"
-          >
-            Nochmal spielen
-          </button>
           {quizStore.score >= 12 ? (
             <p>
               Herzlichen Glückwunsch! Du bist perfekt für eine
               Koch-Lehre bei der Eurest geeignet! Bewirb dich gleich
               hier: *Link
             </p>
+          ) : quizStore.score >= 7 ? (
+            <p>
+              Du hast dich schon gut geschlagen!
+              <br />
+              Das Interesse am Lehrberuf Koch:Köchin ist auf jeden
+              Fall vorhanden, an einigen Stellen jedoch noch
+              ausbaufähig.
+              <br />
+              Diese Fertigkeiten können wir dir in einer Lehre bei uns
+              auf alle Fälle beibringen – bewirb dich doch deshalb
+              direkt bei uns: *Link*
+            </p>
           ) : (
             <p>
-              Du hast dich gut geschlagen! Dein Interesse an diesem
-              Lehrberuf ist auf alle Fälle da, nur bei ein paar
-              kleinen Punkten gibt es noch etwas Nachholbedarf. Das
-              macht aber gar nichts – genau diese Fertigkeiten
-              bekommst du dann bei uns vermittelt!
+              Zum jetzigen Zeitpunkt fehlt dir das nötige Interesse an
+              Lebensmitteln wohl noch etwas.
               <br />
-              Bewerbe dich doch gleich hier: *Link* oder lies dir noch
-              ein paar weitere Informationen hier *Link* durch!
+              Das kann aber auf jeden Fall noch verbessert werden.
+              Versuche es doch einfach noch einmal mit unserem
+              Interessenstest!
             </p>
           )}
+          <button
+            onClick={() => quizStore.resetQuiz()}
+            className="results__content__restart"
+          >
+            Nochmal spielen
+          </button>
         </div>
       </div>
     );

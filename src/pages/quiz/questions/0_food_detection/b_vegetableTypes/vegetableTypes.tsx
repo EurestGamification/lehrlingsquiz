@@ -12,8 +12,7 @@ import {
   useSensor,
   useSensors
 } from "@dnd-kit/core";
-import { Droppable } from "../dnd/droppable";
-import { Draggable } from "../dnd/draggable";
+import { Droppable, Draggable } from "@lehrlingsquiz/components";
 import lodash from "lodash";
 
 // vegetables

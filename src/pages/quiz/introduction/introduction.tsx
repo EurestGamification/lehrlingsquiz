@@ -21,8 +21,20 @@ const Introduction: React.FC = inject(quizStore.storeKey)(
             alt="Eurest apprentice"
           />
         </div>
+        <h2>
+          Zukünftige:r Spitzenkoch:köchin in Sicht? Finde es heraus!
+        </h2>
         <p className="introduction__instruction">
-          some intro text...
+          Liebst du das Kochen und wolltest schon lange rausfinden, ob
+          du dich für eine Lehre in der Gastronomie eignest?
+          <br />
+          Mit unserem Tool erfährst du ganz schnell und einfach, ob du
+          das notwendige Interesse am Lehrberuf Koch:Köchin
+          mitbringst.
+          <br />
+          Klicke dich einfach durch die einzelnen Bereiche, sammle so
+          viele Punkte als möglich und im Nu erhältst du eine
+          Rückmeldung!
         </p>
         <div className="introduction__action-wrapper">
           <button onClick={() => quizStore.startQuiz()}>
