@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import "./schnitzelIngredients.scss";
 import { countMatches } from "@lehrlingsquiz/util";
@@ -141,13 +138,11 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     ) {
       setIngredients(ingredients.filter((e) => e !== ingredient));
       setChosenIngregients([ingredient, ...chosenIngredients]);
-      return;
     } else if (target === droppableStartId) {
       setIngredients((prev) => [...prev, ingredient]);
       setChosenIngregients(
         chosenIngredients.filter((e) => e !== ingredient)
       );
-      return;
     }
   };
 

@@ -16,6 +16,9 @@ export const Droppable: React.FC<DroppableProps> = ({
   const { isOver, setNodeRef } = useDroppable({
     id: id ?? "droppable"
   });
+  const style = {
+    opacity: isOver ? 0.5 : undefined
+  };
 
   return (
     <div
@@ -23,6 +26,7 @@ export const Droppable: React.FC<DroppableProps> = ({
       className={
         (className ? className + " " : "") + (isOver ? "isOver" : "")
       }
+      style={style}
     >
       {children ?? ""}
     </div>
