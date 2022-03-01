@@ -122,7 +122,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
                   className="breadTypes__content__draggable"
                 >
                   <img
-                    className={`breadTypes__content__draggable breadTypes__content__draggable__${Bread[
+                    className={`breadTypes__content__draggable breadTypes__content__draggable ${Bread[
                       bread
                     ].toLowerCase()}`}
                     src={breadSources[bread]}

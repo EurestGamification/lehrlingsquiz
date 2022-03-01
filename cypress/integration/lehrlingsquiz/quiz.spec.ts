@@ -33,7 +33,7 @@ describe("Lehrlingsquiz", () => {
     for (const [key, value] of Object.entries(solution)) {
       value.forEach((bread) => {
         cy.get(
-          `img.breadTypes__content__draggable__${bread.toLowerCase()}`
+          `img.breadTypes__content__draggable.${bread.toLowerCase()}`
         ).drag(
           `div.breadTypes__content__droppable__${key.toLowerCase()}`
         );
