@@ -30,5 +30,6 @@ export const eurestAscii = `
                 .-=++++++++++++++++++++++=-:                
                                                             
                                                             
-      https://github.com/EurestGamification/lehrlingsquiz
+                      We <3 Open Source                     
+      https://github.com/EurestGamification/lehrlingsquiz   
 `;
