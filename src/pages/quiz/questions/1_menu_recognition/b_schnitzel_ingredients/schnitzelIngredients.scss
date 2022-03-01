@@ -14,8 +14,19 @@
       justify-content: space-between;
 
       &__ingredient-counter {
-        margin: auto 0 auto variables.$spacing-l;
+        margin: auto 0 auto 0;
+        padding: variables.$spacing-xs variables.$spacing-m
+          variables.$spacing-xs variables.$spacing-xs;
         font-weight: 600;
+        font-size: large;
+      }
+
+      button {
+        margin: auto 0 auto 0;
+
+        @include mixins.for-desktop {
+          margin: auto 0 auto variables.$spacing-m;
+        }
       }
 
       @include mixins.for-desktop {

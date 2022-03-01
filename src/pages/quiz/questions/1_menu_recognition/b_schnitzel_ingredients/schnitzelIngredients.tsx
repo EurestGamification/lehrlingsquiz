@@ -183,13 +183,13 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
           </Droppable>
 
           <div className="schnitzel-ingredients__content__actions">
-            <button onClick={() => resetIngredients()}>
-              Zutaten zurücksetzen
-            </button>
             <p className="schnitzel-ingredients__content__actions__ingredient-counter">
               {chosenIngredients.length} von{" "}
               {correctIngredients.length} Zutaten
             </p>
+            <button onClick={() => resetIngredients()}>
+              Zutaten zurücksetzen
+            </button>
           </div>
 
           <Pan ingredients={chosenIngredients} />
