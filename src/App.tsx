@@ -8,7 +8,8 @@ import {
   Theme,
   ThemeProvider
 } from "@mui/material/styles";
-import { colors } from "@lehrlingsquiz/theme";
+import { colors, eurestAscii } from "@lehrlingsquiz/theme";
+import { ReactComment } from "@lehrlingsquiz/components";
 
 const stores = {
   quizStore
@@ -26,6 +27,7 @@ const muiTheme: Theme = createTheme({
 const App: React.FC = () => {
   return (
     <div className="App">
+      <ReactComment text={eurestAscii} />
       <StoreProvider {...stores}>
         <ThemeProvider theme={muiTheme}>
           <fromRouter.default />
