@@ -7,6 +7,7 @@
 <img src="https://github.com/EurestGamification/lehrlingsquiz/actions/workflows/production.yml/badge.svg" alt="lehrlingsquiz CI"/>
 <img src="https://badgen.net/badge/Open%20Source%3F/Yes%21/blue?icon=github" alt="open source"/>
 </p>
+
 ## Live App
 
 This project runs on [https://eurest-lehrlingsquiz.netlify.app/](https://eurest-lehrlingsquiz.netlify.app/)
