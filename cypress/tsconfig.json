@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["ES2015", "dom"],
-    "types": ["cypress"]
+    "lib": ["ESNext", "dom"],
+    "types": ["cypress", "@4tw/cypress-drag-drop"]
   },
   "include": ["**/*.ts"]
 }

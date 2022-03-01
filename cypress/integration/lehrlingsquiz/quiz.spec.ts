@@ -21,6 +21,26 @@ describe("Lehrlingsquiz", () => {
     );
   });
 
+  it("handles breadTypes drag and drop correctly", () => {
+    const solution = {
+      Weißbrot: ["Toastbrot", "Baguette"],
+      Gebäck: ["Semmel", "Laugenstangerl"],
+      Schwarzbrot: ["Roggenbrot", "Vollkornbrot"]
+    } as const;
+
+    cy.goto("breadTypes");
+
+    for (const [key, value] of Object.entries(solution)) {
+      value.forEach((bread) => {
+        cy.get(
+          `img.breadTypes__content__draggable__${bread.toLowerCase()}`
+        ).drag(
+          `div.breadTypes__content__droppable__${key.toLowerCase()}`
+        );
+      });
+    }
+  });
+
   it("renders vegetableTypes correctly", () => {
     cy.goto("vegetableTypes");
     cy.contains(

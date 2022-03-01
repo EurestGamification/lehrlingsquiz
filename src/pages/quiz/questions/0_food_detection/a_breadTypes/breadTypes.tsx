@@ -105,7 +105,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
               id={breadType}
               key={bTi}
               className={
-                "breadTypes__content__droppable breadTypes__content__droppable__" +
+                `breadTypes__content__droppable breadTypes__content__droppable__${breadType.toLowerCase()} breadTypes__content__droppable__` +
                 (breadType === "Start" ? "start" : "basket")
               }
             >
@@ -122,7 +122,7 @@ const BreadTypes: React.FC<BreadTypesProps> = ({
                   className="breadTypes__content__draggable"
                 >
                   <img
-                    className={`breadTypes__content__draggable ${Bread[
+                    className={`breadTypes__content__draggable breadTypes__content__draggable__${Bread[
                       bread
                     ].toLowerCase()}`}
                     src={breadSources[bread]}
