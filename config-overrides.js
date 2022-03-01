@@ -7,7 +7,7 @@ const path = require("path");
  */
 function resolveTsconfigPathsToAlias({
   tsconfigPath = "./tsconfig.json",
-  webpackConfigBasePath = __dirname,
+  webpackConfigBasePath = __dirname
 } = {}) {
   const { paths } = require(tsconfigPath).compilerOptions;
 
@@ -46,8 +46,8 @@ module.exports = function override(config = {}, env) {
         "theme:styles": path.join(
           __dirname,
           "src/theme/styles/index.scss"
-        ),
-      },
-    },
+        )
+      }
+    }
   };
 };

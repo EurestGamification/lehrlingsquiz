@@ -17,13 +17,13 @@
 /// <reference types="cypress" />
 
 // Import commands.js using ES2015 syntax:
-import "./commands";
 import { QuizSectionType } from "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
 // Additional packages
+import "./commands";
 import "cypress-hmr-restarter";
 
 declare global {
