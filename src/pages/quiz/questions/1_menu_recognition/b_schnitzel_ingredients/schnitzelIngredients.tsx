@@ -161,10 +161,13 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
             Super, und jetzt bereiten wir unsere Hauptspeise zu –
             heute gibt es ein Wiener Schnitzel!
             <br />
-            <br />
             Kennst du die typischen Zutaten für ein traditionelles
             Wiener Schnitzel mit klassischer Beilage? Gib alle acht
             richtigen Zutaten in die Pfanne!
+            <br />
+            <br />
+            Achtung! Lies dir ganz genau durch, welches Gericht heute
+            zubereitet wird!
           </p>
           <h4>Verfügbare Zutaten</h4>
           <Droppable
