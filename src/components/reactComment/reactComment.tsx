@@ -22,6 +22,7 @@ export const ReactComment: React.FC<ReactCommentProps> = ({
   useEffect(() => {
     element.current?.outerHTML &&
       (element.current.outerHTML = createComment());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div ref={element}></div>;
