@@ -138,7 +138,10 @@ const SchnitzelIngredients: React.FC<SchnitzelIngredientsProps> = ({
     ) {
       setIngredients(ingredients.filter((e) => e !== ingredient));
       setChosenIngregients([ingredient, ...chosenIngredients]);
-    } else if (target === droppableStartId) {
+    } else if (
+      target === droppableStartId &&
+      !ingredients.includes(ingredient)
+    ) {
       setIngredients((prev) => [...prev, ingredient]);
       setChosenIngregients(
         chosenIngredients.filter((e) => e !== ingredient)
