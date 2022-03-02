@@ -6,6 +6,9 @@ import Confetti from "react-confetti";
 import apprentice from "@lehrlingsquiz/assets/img/results_apprentice.jpeg";
 import "./results.scss";
 
+const applicationLink =
+  "https://jobs.eurest.at/Register?job=2" as const;
+
 const Results: React.FC = inject(quizStore.storeKey)(
   observer(() => {
     const { width, height } = useWindowSize();
@@ -28,7 +31,7 @@ const Results: React.FC = inject(quizStore.storeKey)(
             <p>
               Herzlichen Glückwunsch! Du bist perfekt für eine
               Koch-Lehre bei der Eurest geeignet! Bewirb dich gleich
-              hier: *Link
+              hier: <a href={applicationLink}>{applicationLink}</a>
             </p>
           ) : quizStore.score >= 7 ? (
             <p>
@@ -40,7 +43,8 @@ const Results: React.FC = inject(quizStore.storeKey)(
               <br />
               Diese Fertigkeiten können wir dir in einer Lehre bei uns
               auf alle Fälle beibringen – bewirb dich doch deshalb
-              direkt bei uns: *Link*
+              direkt bei uns:{" "}
+              <a href={applicationLink}>{applicationLink}</a>
             </p>
           ) : (
             <p>
