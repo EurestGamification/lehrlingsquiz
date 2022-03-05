@@ -31,7 +31,14 @@ const Results: React.FC = inject(quizStore.storeKey)(
             <p>
               Herzlichen Glückwunsch! Du bist perfekt für eine
               Koch-Lehre bei der Eurest geeignet! Bewirb dich gleich
-              hier: <a href={applicationLink}>{applicationLink}</a>
+              hier:{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={applicationLink}
+              >
+                Jetzt bewerben!
+              </a>
             </p>
           ) : quizStore.score >= 7 ? (
             <p>
@@ -44,7 +51,13 @@ const Results: React.FC = inject(quizStore.storeKey)(
               Diese Fertigkeiten können wir dir in einer Lehre bei uns
               auf alle Fälle beibringen – bewirb dich doch deshalb
               direkt bei uns:{" "}
-              <a href={applicationLink}>{applicationLink}</a>
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href={applicationLink}
+              >
+                Jetzt bewerben!
+              </a>
             </p>
           ) : (
             <p>
