@@ -1,8 +1,12 @@
+/* eslint-disable no-console */
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { initializeGoogleAnalytics } from "./analytics";
+
+initializeGoogleAnalytics();
 
 ReactDOM.render(
   <React.StrictMode>
