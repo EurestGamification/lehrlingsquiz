@@ -4,9 +4,9 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { initializeGoogleAnalytics } from "./analytics";
+// import { initializeGoogleAnalytics } from "./analytics";
 
-initializeGoogleAnalytics();
+// initializeGoogleAnalytics();
 
 ReactDOM.render(
   <React.StrictMode>
